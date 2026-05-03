@@ -1876,6 +1876,36 @@ textarea.create-input { resize: vertical; min-height: 90px; line-height: 1.6; }
 
 
 /* ══════════════════════════════════════
+   EXPLORE HERO
+   ══════════════════════════════════════ */
+.explore-hero { background: linear-gradient(135deg, #1A1614 0%, #3A2A1A 50%, #1A1614 100%); padding: 52px 140px 48px; position: relative; overflow: hidden; }
+.explore-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 100% at 70% 50%, rgba(255,209,102,0.12) 0%, transparent 70%); pointer-events: none; }
+.explore-hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,209,102,0.15); border: 1px solid rgba(255,209,102,0.3); color: #FFD166; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 18px; }
+.explore-hero-title { font-family: 'Fraunces', serif; font-size: 46px; font-weight: 900; letter-spacing: -1px; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+.explore-hero-title em { color: #FFD166; font-style: italic; }
+.explore-hero-sub { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 460px; line-height: 1.6; }
+.explore-hero-deco { position: absolute; right: 140px; top: 50%; transform: translateY(-50%); font-size: 72px; line-height: 1; display: flex; gap: 16px; opacity: 0.18; filter: grayscale(0.3); pointer-events: none; }
+
+.explore-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.explore-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.explore-filter { padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1.5px solid rgba(26,22,18,0.1); background: var(--warm-white); cursor: pointer; transition: all 0.15s; font-family: 'DM Sans', sans-serif; color: var(--ink-soft); }
+.explore-filter:hover { border-color: var(--amber); color: var(--amber); }
+.explore-filter.active { background: var(--ink); color: white; border-color: var(--ink); }
+
+.explore-card { background: var(--warm-white); border-radius: 22px; box-shadow: var(--card-shadow); cursor: pointer; transition: all 0.22s; overflow: hidden; border: 2px solid transparent; }
+.explore-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(26,22,18,0.14); border-color: rgba(26,22,18,0.06); }
+.explore-card-banner { height: 130px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.explore-card-banner::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.04); }
+.explore-card-banner::after { content: ''; position: absolute; right: -30px; bottom: -30px; width: 140px; height: 140px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+.explore-card-emoji { font-size: 48px; position: relative; z-index: 1; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12)); }
+.explore-card-body { padding: 20px 22px 22px; }
+.explore-card-name { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+.explore-card-meta { font-size: 12px; color: #9E9289; margin-bottom: 14px; }
+.explore-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.explore-card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
+.explore-card-count { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #7A706A; background: rgba(26,22,18,0.06); padding: 4px 10px; border-radius: 20px; }
+
+/* ══════════════════════════════════════
    ACCOUNT VIEW (full-width)
    ══════════════════════════════════════ */
 .acc-shell { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 65px); }

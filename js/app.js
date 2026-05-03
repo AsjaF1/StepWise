@@ -24,6 +24,8 @@ const EXPLORE_DECKS = [
     name: 'English (B1/B2)',
     theme: 'amber',
     emoji: '☀️',
+    category: 'vocabulary',
+    tagLabel: 'Vocabulary', tagBg: '#FFF4DC', tagColor: '#9A6800',
     cards: [
       { _id: 'en-1', term: 'Mundane',        definition: 'Lacking interest or excitement',    type: 'mnemonic', parts: [{chunk:'MUN',meaning:'moon'},{chunk:'DAY',meaning:'day'}],                           example: 'same boring moon-day routine',          emojis: ['🌙','😐'] },
       { _id: 'en-2', term: 'Vicarious',      definition: 'Experienced through someone else',  type: 'mnemonic', parts: [{chunk:'VIC',meaning:'vicar'},{chunk:'AR',meaning:'are'}],                           example: 'living life through another person',    emojis: ['👤','✨'] },
@@ -40,6 +42,8 @@ const EXPLORE_DECKS = [
     name: 'Medicine',
     theme: 'rust',
     emoji: '🧠',
+    category: 'medicine',
+    tagLabel: 'Medicine', tagBg: '#EAF0FB', tagColor: '#1A3A6A',
     cards: [
       { _id: 'med-1', term: 'Diagnosis',      definition: 'Identification of a disease',              type: 'mnemonic', parts: [{chunk:'DIA',meaning:'diagram'},{chunk:'GNOSIS',meaning:'knowing'}],              example: "figuring out what's wrong",        emojis: ['🩺','📋'] },
       { _id: 'med-2', term: 'Symptom',        definition: 'Sign of a medical condition',              type: 'mnemonic', parts: [{chunk:'SYM',meaning:'sign'},{chunk:'PTOM',meaning:'problem'}],                    example: "body's warning signal",             emojis: ['🚨','🤒'] },
@@ -56,6 +60,8 @@ const EXPLORE_DECKS = [
     name: 'Art',
     theme: 'honey',
     emoji: '🎨',
+    category: 'arts',
+    tagLabel: 'Arts', tagBg: '#FCF0F4', tagColor: '#6A1A30',
     cards: [
       { _id: 'art-1', term: 'Composition', definition: 'Arrangement of visual elements',        type: 'mnemonic', parts: [{chunk:'COM',meaning:'together'},{chunk:'POSITION',meaning:'placement'}],          example: 'how everything is placed',      emojis: ['🎨','🖼️'] },
       { _id: 'art-2', term: 'Contrast',    definition: 'Difference between light, color, or tone', type: 'mnemonic', parts: [{chunk:'CONTRA',meaning:'against'},{chunk:'AST',meaning:'sharp difference'}],  example: 'light vs dark effect',          emojis: ['⚫','⚪'] },
@@ -435,24 +441,36 @@ function _renderExploreGrid() {
   EXPLORE_DECKS.forEach((deck, i) => {
     const cfg  = DECK_CONFIGS[deck.theme] || DECK_CONFIGS.amber;
     const card = document.createElement('div');
-    card.className      = 'md-set-card';
-    card.dataset.action = 'showExploreDeck';
-    card.dataset.arg1   = deck._id;
-    card.dataset.name   = deck.name;
-    card.dataset.order  = i;
+    card.className        = 'explore-card';
+    card.dataset.action   = 'showExploreDeck';
+    card.dataset.arg1     = deck._id;
+    card.dataset.name     = deck.name;
+    card.dataset.order    = i;
+    card.dataset.category = deck.category || 'all';
     card.innerHTML = `
-      <div class="md-set-banner" style="background:${cfg.bg}">
-        <div class="md-set-emoji">${deck.emoji || '📖'}</div>
+      <div class="explore-card-banner" style="background:${cfg.bg}">
+        <div class="explore-card-emoji">${deck.emoji || '📖'}</div>
       </div>
-      <div class="md-set-body">
-        <div class="md-set-name">${_escHtml(deck.name)}</div>
-        <div class="md-set-meta">${deck.cards.length} cards</div>
-        <div class="md-set-tags">
-          <span class="md-set-tag" style="background:#EAF3EB;color:#2E5430;">✦ Official</span>
+      <div class="explore-card-body">
+        <div class="explore-card-name">${_escHtml(deck.name)}</div>
+        <div class="explore-card-meta">by StepWise</div>
+        <div class="explore-card-tags">
+          <span class="explore-card-tag" style="background:${deck.tagBg};color:${deck.tagColor};">${deck.tagLabel}</span>
+          <span class="explore-card-count">📇 ${deck.cards.length} cards</span>
+          <span class="explore-card-tag" style="background:#EAF3EB;color:#2E5430;">✦ Official</span>
         </div>
       </div>
     `;
     grid.appendChild(card);
+  });
+}
+
+function filterExplore(cat) {
+  document.querySelectorAll('#explore-filters .explore-filter').forEach(b => {
+    b.classList.toggle('active', b.dataset.arg1 === cat);
+  });
+  document.querySelectorAll('#ex-sets-grid .explore-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
   });
 }
 
@@ -463,7 +481,7 @@ function sortExploreSets(dir) {
     b.classList.toggle('active', b.dataset.arg1 === _exploreSortDir);
   });
   const grid  = document.getElementById('ex-sets-grid');
-  const cards = [...grid.querySelectorAll('.md-set-card')];
+  const cards = [...grid.querySelectorAll('.explore-card')];
   if (_exploreSortDir) {
     cards.sort((a, b) => { const cmp = a.dataset.name.localeCompare(b.dataset.name, undefined, {sensitivity:'base'}); return _exploreSortDir === 'asc' ? cmp : -cmp; });
   } else {
@@ -2587,6 +2605,7 @@ async function init() {
       addInlineCard,
       sortSets: () => sortSets(arg1),
       sortExploreSets: () => sortExploreSets(arg1),
+      filterExplore:   () => filterExplore(arg1),
       openCustomEmoji: () => openCustomEmoji(btn),
       showEmojiCat:   () => showEmojiCat(btn, arg1),
       switchAccSection: () => switchAccSection(arg1, btn),
