@@ -18,6 +18,57 @@ const DECK_CONFIGS = {
   navy:       { bg: 'linear-gradient(135deg, #8ABDE0 0%, #4A8CB8 100%)', accent: '#2A7ABA', ink: '#0A1F2A' },
 };
 
+const EXPLORE_DECKS = [
+  {
+    _id: 'explore-en',
+    name: 'English (B1/B2)',
+    theme: 'amber',
+    emoji: '🎓',
+    cards: [
+      { _id: 'en-1', term: 'Mundane',       definition: 'Lacking interest or excitement' },
+      { _id: 'en-2', term: 'Vicarious',     definition: 'Experienced through someone else' },
+      { _id: 'en-3', term: 'Ephemeral',     definition: 'Lasting a very short time' },
+      { _id: 'en-4', term: 'Sycophant',     definition: 'Insincere flatterer' },
+      { _id: 'en-5', term: 'Quintessential',definition: 'Perfect example of something' },
+      { _id: 'en-6', term: 'Lethargy',      definition: 'Lack of energy or motivation' },
+      { _id: 'en-7', term: 'Cacophony',     definition: 'Harsh mixture of sounds' },
+      { _id: 'en-8', term: 'Serendipity',   definition: 'Lucky accidental discovery' },
+    ],
+  },
+  {
+    _id: 'explore-med',
+    name: 'Medicine',
+    theme: 'rust',
+    emoji: '🏥',
+    cards: [
+      { _id: 'med-1', term: 'Diagnosis',      definition: 'Identification of a disease' },
+      { _id: 'med-2', term: 'Symptom',        definition: 'Sign of a medical condition' },
+      { _id: 'med-3', term: 'Inflammation',   definition: "Body's response to injury or infection" },
+      { _id: 'med-4', term: 'Antibiotic',     definition: 'Medicine that kills bacteria' },
+      { _id: 'med-5', term: 'Immunity',       definition: "Body's ability to resist disease" },
+      { _id: 'med-6', term: 'Pathogen',       definition: 'Microorganism that causes disease' },
+      { _id: 'med-7', term: 'Prescription',   definition: 'Written order for medicine' },
+      { _id: 'med-8', term: 'Rehabilitation', definition: 'Recovery process after illness or injury' },
+    ],
+  },
+  {
+    _id: 'explore-art',
+    name: 'Art',
+    theme: 'honey',
+    emoji: '🎨',
+    cards: [
+      { _id: 'art-1', term: 'Composition', definition: 'Arrangement of visual elements' },
+      { _id: 'art-2', term: 'Contrast',    definition: 'Difference between light, color, or tone' },
+      { _id: 'art-3', term: 'Perspective', definition: 'Technique for creating depth' },
+      { _id: 'art-4', term: 'Proportion',  definition: 'Size relationship between parts' },
+      { _id: 'art-5', term: 'Texture',     definition: 'Surface quality of an artwork' },
+      { _id: 'art-6', term: 'Hue',         definition: 'Pure color in the spectrum' },
+      { _id: 'art-7', term: 'Saturation',  definition: 'Intensity of a color' },
+      { _id: 'art-8', term: 'Balance',     definition: 'Visual stability in a composition' },
+    ],
+  },
+];
+
 const EMOJI_DATA = {
   study:   ['📖','📚','📝','✏️','🖊️','📓','📒','📔','📕','📗','📘','📙','🗒️','📐','📏','🔖','📌','🗂️','📊','📈','📉','🧮','🎓','🏫','💡','🔍','🔎'],
   nature:  ['🌿','🌱','🌳','🌲','🍀','🌸','🌺','🌻','🌹','🌷','🍃','🍂','🍁','🌾','🌵','🎋','🎍','🌊','🌈','☀️','🌙','⭐','🌍','🌎','🌏','🐾','🦋','🐝','🌿'],
@@ -45,6 +96,7 @@ let _pendingFolderId  = null;    // set when "create deck inside folder" flow
 let _pendingDelete    = null;
 let _currentDeckColor = 'amber';
 let _ctxTarget        = null;
+let _isExploreDeck    = false;
 
 /* ── 3. UTILITIES ────────────────────────────────── */
 
@@ -205,7 +257,7 @@ function _renderWordList() {
         ${partsHtml}
       </div>
       ${badgeLabel ? `<span class="wr-status badge-${status}">${badgeLabel}</span>` : ''}
-      <button class="wr-delete" data-action="deleteCard" data-arg1="${c._id}" title="Delete">✕</button>
+      ${_isExploreDeck ? '' : `<button class="wr-delete" data-action="deleteCard" data-arg1="${c._id}" title="Delete">✕</button>`}
     `;
 
     const isMnemonic  = c.type === 'mnemonic';
@@ -230,7 +282,7 @@ function _renderWordList() {
       </div>
       ${contextHtml}
       <div class="wd-actions">
-        <button class="wd-btn" data-action="editCard" data-arg1="${c._id}">✏️ Edit</button>
+        ${_isExploreDeck ? '' : `<button class="wd-btn" data-action="editCard" data-arg1="${c._id}">✏️ Edit</button>`}
         <button class="wd-btn" data-action="markCard" data-arg1="${c._id}" data-arg2="mastered">✓ Know it</button>
         <button class="wd-btn" data-action="markCard" data-arg1="${c._id}" data-arg2="review">Still learning</button>
       </div>
@@ -240,12 +292,14 @@ function _renderWordList() {
     list.appendChild(detail);
   });
 
-  const addBtn = document.createElement('div');
-  addBtn.className = 'md-add-card';
-  addBtn.dataset.action = 'addInlineCard';
-  addBtn.style.cssText = 'margin:10px 0;min-height:80px;width:100%;max-width:none;';
-  addBtn.innerHTML = '<div class="md-add-icon" style="width:32px;height:32px;font-size:18px;">＋</div><div class="md-add-label" style="font-size:12px;">Add Card</div>';
-  list.appendChild(addBtn);
+  if (!_isExploreDeck) {
+    const addBtn = document.createElement('div');
+    addBtn.className = 'md-add-card';
+    addBtn.dataset.action = 'addInlineCard';
+    addBtn.style.cssText = 'margin:10px 0;min-height:80px;width:100%;max-width:none;';
+    addBtn.innerHTML = '<div class="md-add-icon" style="width:32px;height:32px;font-size:18px;">＋</div><div class="md-add-label" style="font-size:12px;">Add Card</div>';
+    list.appendChild(addBtn);
+  }
 }
 
 /* ── 6. ROUTER ───────────────────────────────────── */
@@ -381,6 +435,42 @@ function showExplore() {
   _setNavActive('explore');
 }
 
+function showExploreDeck(deckId) {
+  const deck = EXPLORE_DECKS.find(d => d._id === deckId);
+  if (!deck) return;
+
+  _isExploreDeck    = true;
+  _currentDeckId    = deckId;
+  _currentDeckColor = deck.theme || 'amber';
+  _currentDeckCards = deck.cards;
+  _cardProgressMap  = {};
+
+  const cfg  = DECK_CONFIGS[_currentDeckColor] || DECK_CONFIGS.amber;
+  const hero = document.getElementById('deck-hero-bg');
+  if (hero) {
+    hero.style.background = cfg.bg;
+    hero.style.color = cfg.ink;
+    hero.querySelectorAll('.dv-label, .dv-desc, .dhs-label, .dv-stat-sep').forEach(el => el.style.color = cfg.ink);
+  }
+
+  const titleEl   = document.getElementById('deck-hero-title');
+  const bcInner   = document.getElementById('deck-breadcrumb-inner');
+  const deleteBtn = document.getElementById('deck-delete-btn');
+  const renameBtn = document.querySelector('[data-action="renameDeck"]');
+  const backBtn   = document.querySelector('#deck-view .back-btn');
+
+  if (titleEl)   titleEl.textContent = deck.name;
+  if (bcInner)   bcInner.textContent = 'Explore · ' + deck.name;
+  if (deleteBtn) deleteBtn.style.display = 'none';
+  if (renameBtn) renameBtn.style.display = 'none';
+  if (backBtn)   { backBtn.textContent = '← Explore'; backBtn.dataset.action = 'showExplore'; }
+
+  hideAll();
+  _setLayout('two-col');
+  _showView('deck-view');
+  _renderWordList();
+}
+
 function showAccount() {
   hideAll();
   _setLayout('full');
@@ -420,9 +510,16 @@ function saveProfile() {
 }
 
 async function showDeck(deckId, deckName) {
+  _isExploreDeck = false;
   const deck = _allDecks.find(d => String(d._id) === String(deckId));
   _currentDeckId    = deckId;
   _currentDeckColor = deck?.theme || 'amber';
+  const deleteBtn = document.getElementById('deck-delete-btn');
+  const renameBtn = document.querySelector('[data-action="renameDeck"]');
+  const backBtn   = document.querySelector('#deck-view .back-btn');
+  if (deleteBtn) deleteBtn.style.display = '';
+  if (renameBtn) renameBtn.style.display = '';
+  if (backBtn)   { backBtn.textContent = '← My Decks'; backBtn.dataset.action = 'showMyDecks'; }
 
   const cfg  = DECK_CONFIGS[_currentDeckColor] || DECK_CONFIGS.amber;
   const hero = document.getElementById('deck-hero-bg');
@@ -2394,6 +2491,7 @@ async function init() {
     const arg2   = btn.dataset.arg2;
     const actions = {
       showHome, showMyDecks, showDeck: () => showDeck(arg1, arg2),
+      showExploreDeck: () => showExploreDeck(arg1),
       showFlashcards, filterCategory: () => filterCategory(arg1),
       showGoal, showCreateDeck, showCreateCards, showStudy, exitStudy,
       showMemory, exitMemory, showMultipleChoice, exitMC, showExplore, showAccount,
