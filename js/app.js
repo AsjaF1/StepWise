@@ -1406,9 +1406,11 @@ async function createDeck() {
   try {
     const terms  = cards.map(c => c.term).join('\n');
     const result = await window.Api.ai.generate(terms);
-    const aiCards = result.cards || [];
-    enrichedCards = cards.map((c, i) => {
-      const ai = aiCards[i];
+    const aiCards  = result.cards || [];
+    const aiByTerm = {};
+    aiCards.forEach(a => { aiByTerm[a.term.toLowerCase()] = a; });
+    enrichedCards = cards.map((c) => {
+      const ai = aiByTerm[c.term.toLowerCase()];
       if (!ai) return { ...c, type: 'word' };
       return {
         term:       c.term,
@@ -1523,13 +1525,13 @@ async function extractWithAI() {
 
     const list = document.getElementById('card-editor-list');
     list.innerHTML = '';
-    pairs.forEach(({ term, definition }) => {
+    pairs.forEach(({ term, meaning, definition }) => {
       const row = document.createElement('div');
       row.className = 'card-editor-row';
       row.innerHTML = `
         <input class="cer-input" placeholder="Word or term…" value="${_escHtml(term || '')}">
         <span class="cer-arrow">→</span>
-        <input class="cer-input" placeholder="Definition or hint…" value="${_escHtml(definition || '')}">
+        <input class="cer-input" placeholder="Definition or hint…" value="${_escHtml(meaning || definition || '')}">
         <button class="cer-delete">✕</button>
       `;
       row.querySelector('.cer-delete').addEventListener('click', () => row.remove());
