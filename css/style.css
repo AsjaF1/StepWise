@@ -2315,3 +2315,239 @@ textarea.create-input { resize: vertical; min-height: 90px; line-height: 1.6; }
 .ctx-item:hover { background: #f5f5f5; }
 .ctx-danger { color: #c0392b; }
 .ctx-danger:hover { background: #fdf0ef; }
+
+
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE — max-width: 768px
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── NAV ── */
+  #app-nav { padding: 10px 16px; height: auto; min-height: 52px; }
+  .logo { font-size: 20px; }
+  .streak-badge { display: none; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 13px; }
+  .avatar { width: 32px; height: 32px; font-size: 12px; }
+
+  /* ── GLOBAL LAYOUT ── */
+  #content-shell,
+  #content-shell[data-layout="three-col"] {
+    grid-template-columns: 1fr;
+  }
+  #right-panel { display: none !important; }
+  #app-sidebar { display: none; }
+
+  /* ── HOME ── */
+  #app-home main, .home-main { padding: 20px 16px 40px; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .featured-word { font-size: 34px; }
+  .featured-card { padding: 24px; }
+  .featured-actions { flex-wrap: wrap; }
+  .cards-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  /* ── MY DECKS ── */
+  .mdecks-layout { flex-direction: column; }
+  .mdecks-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    padding: 12px 16px 8px;
+    border-right: none;
+    border-bottom: 1.5px solid rgba(26,22,18,0.07);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    overflow-y: visible;
+  }
+  .mdecks-sidebar-section { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .mdecks-sidebar-label { display: none; }
+  .mdecks-nav-item { padding: 6px 12px; font-size: 12px; width: auto; border-radius: 20px; }
+  .mdecks-cat-item { padding: 5px 10px; font-size: 12px; width: auto; border-radius: 20px; }
+  .progress-mini { display: none; }
+  .mdecks-layout .md-main { padding: 20px 16px 40px; }
+  .mdecks-layout .md-grid { grid-template-columns: repeat(2, 1fr); }
+  .md-main { padding: 20px 16px 40px; }
+  .md-title { font-size: 26px; }
+  .md-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  #folder-view { padding: 20px 16px 40px; }
+  .md-add-card { min-height: 160px; }
+
+  /* ── DECK VIEW ── */
+  .deck-hero { padding: 16px 16px 0; }
+  .deck-hero-inner { padding: 22px 18px 22px; }
+  .deck-hero-title { font-size: 26px; }
+  .deck-hero-desc { font-size: 13px; margin-bottom: 18px; }
+  .deck-hero-stats { gap: 16px; margin-bottom: 18px; }
+  .dhs-val { font-size: 22px; }
+  .deck-hero-actions { flex-wrap: wrap; gap: 8px; }
+  .deck-hero-btn { padding: 10px 16px; font-size: 13px; }
+  .deck-body {
+    grid-template-columns: 1fr;
+    padding: 0 16px 40px;
+    gap: 0;
+  }
+  .deck-sidebar { display: none; }
+  .dv-page { padding: 16px 16px 60px; }
+  .dv-title { font-size: 26px; }
+  .dv-header-body { padding: 20px 20px 2px; }
+  .dv-actions { gap: 6px; }
+  .dv-study-btn { flex: 1; text-align: center; }
+  .dv-mode-strip { flex-wrap: wrap; gap: 6px; }
+  .dv-mode-btn { font-size: 12px; padding: 8px 11px; }
+  .dv-import-btn { margin-left: 0; width: 100%; text-align: center; }
+
+  /* ── CREATE DECK ── */
+  .create-main { padding: 20px 16px 60px; }
+  .create-page-title { font-size: 26px; }
+  .create-steps { gap: 0; overflow-x: auto; padding-bottom: 4px; }
+  .cs-label { font-size: 11px; }
+  .cs-line { min-width: 12px; }
+  .import-options { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .import-method-big { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .imb-opt { padding: 18px 14px; }
+  .imb-icon { font-size: 28px; margin-bottom: 8px; }
+  .imb-title { font-size: 14px; }
+  .imb-desc { font-size: 11px; }
+  .card-editor-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+  .cer-arrow { display: none; }
+  .create-actions { flex-wrap: wrap; }
+
+  /* ── STUDY FLASHCARDS ── */
+  .study-topbar { padding: 10px 16px; }
+  .study-deck-name { display: none; }
+  .study-prog-bg { width: 100px; }
+  .study-main { padding: 20px 16px 20px; gap: 16px; }
+  #fc-wrap { width: 100%; max-width: 100%; }
+  .fc-face { padding: 28px 20px 24px; min-height: 240px; }
+  .fc-front-emoji { font-size: 40px; margin-bottom: 14px; }
+  .fc-front-word { font-size: 32px; }
+  .fc-front-phonetic { font-size: 13px; }
+  .fc-back-word { font-size: 26px; }
+  .fc-back-def { font-size: 15px; max-width: 100%; }
+  .fc-back-example { font-size: 12px; }
+  .fc-action-btn { padding: 10px 18px; min-width: 90px; font-size: 12px; }
+  .fc-action-btn .btn-icon { font-size: 18px; }
+  #fc-hint { font-size: 12px; }
+  #fc-hint kbd { display: none; }
+  .fc-dots { gap: 5px; }
+
+  /* ── MEMORY GAME ── */
+  .memory-topbar { padding: 10px 16px; }
+  .memory-deck-name { display: none; }
+  .memory-main { padding: 12px 12px 24px; gap: 10px; }
+  .memory-columns {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+    gap: 8px;
+    width: 100%;
+  }
+  .mem-card { min-height: 80px; padding: 10px 8px; border-radius: 12px; }
+  .mem-term-word { font-size: 15px; }
+  .mem-term-tag { font-size: 8px; }
+  .mem-meaning-emoji { font-size: 22px; margin-bottom: 4px; }
+  .mem-meaning-text { font-size: 10px; }
+  .mem-win-card { padding: 28px 20px 24px; }
+
+  /* ── MULTIPLE CHOICE ── */
+  .mc-topbar { padding: 10px 16px; }
+  .mc-deck-name { display: none; }
+  .mc-main { padding: 20px 16px 32px; gap: 0; }
+  .mc-question-card { padding: 24px 18px; }
+  .mc-q-word { font-size: 32px; }
+  .mc-option { padding: 13px 16px; font-size: 14px; gap: 10px; }
+
+  /* ── PRACTICE CHOOSER ── */
+  .pv-shell { padding: 32px 16px; gap: 24px; }
+  .pv-modes { grid-template-columns: 1fr; gap: 12px; max-width: 100%; }
+  .pv-mode-card { padding: 22px 18px; }
+  .pv-title { font-size: 28px; }
+
+  /* ── EXPLORE VIEW ── */
+  .ex-shell { grid-template-columns: 1fr; }
+  .ex-sidebar-wrap { display: none; }
+  .ex-main { padding: 20px 16px 40px; }
+  .ex-title { font-size: 26px; }
+  .ex-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .explore-hero { padding: 28px 16px 24px; }
+  .explore-hero-title { font-size: 28px; }
+  .explore-hero-sub { font-size: 13px; }
+  .explore-hero-deco { display: none; }
+  .explore-filters { gap: 6px; }
+  .explore-filter { padding: 6px 12px; font-size: 12px; }
+  .explore-card-banner { height: 90px; }
+  .explore-card-emoji { font-size: 36px; }
+  .explore-card-name { font-size: 16px; }
+
+  /* ── ACCOUNT VIEW ── */
+  .acc-shell { grid-template-columns: 1fr; }
+  .acc-sidenav { padding: 16px 0 8px; border-right: none; border-bottom: 1px solid rgba(26,22,18,0.08); }
+  .acc-profile-block { padding: 0 16px 14px; }
+  .acc-avatar-large { width: 52px; height: 52px; font-size: 18px; }
+  .acc-nav-item { padding: 8px 16px; font-size: 13px; }
+  .acc-main { padding: 20px 16px 40px; }
+  .acc-stats-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .acc-plan-cards { grid-template-columns: 1fr; }
+  .acc-form-card { padding: 20px; }
+
+  /* ── GOAL VIEW ── */
+  .goal-main { padding: 20px 16px 40px; }
+  .goal-hero { padding: 22px 18px; flex-direction: column; gap: 12px; }
+  .goal-hero-title { font-size: 26px; }
+  .goal-hero-flame { font-size: 48px; align-self: flex-start; }
+  .goal-circle-wrap { flex-direction: column; }
+  .goal-circle-card { padding: 18px; gap: 16px; }
+  .goal-sessions-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .goal-xp-row { grid-template-columns: 1fr; }
+  .goal-week-days { gap: 4px; }
+  .gwd-circle { width: 32px; height: 32px; font-size: 10px; }
+
+  /* ── IMPORT MODAL ── */
+  .imp-dialog { width: 96vw; border-radius: 16px; }
+  .imp-tabs { padding: 12px 16px 0; }
+  .imp-tab { padding: 7px 9px; font-size: 12px; }
+  .imp-body { padding: 14px 16px 0; }
+  .imp-footer { padding: 12px 16px 16px; }
+
+  /* ── TOAST ── */
+  #stepwise-toast {
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 16px;
+    right: 16px;
+    transform: translateX(0) translateY(20px);
+    white-space: normal;
+    text-align: center;
+  }
+  #stepwise-toast.show {
+    transform: translateX(0) translateY(0);
+  }
+
+  /* ── MISC ── */
+  .page-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .page-header h1 { font-size: 26px; }
+  .back-btn { margin-bottom: 18px; }
+  .dv-topbar { flex-wrap: wrap; gap: 8px; }
+  .mc-result { padding: 24px 16px; }
+}
+
+/* ── EXTRA SMALL — max-width: 480px ── */
+@media (max-width: 480px) {
+  .mdecks-layout .md-grid,
+  .md-grid { grid-template-columns: 1fr; }
+  .ex-grid { grid-template-columns: 1fr; }
+  .import-options,
+  .import-method-big { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr; }
+  .goal-sessions-grid { grid-template-columns: 1fr; }
+  .fc-front-word { font-size: 28px; }
+  .fc-face { padding: 24px 16px 20px; min-height: 220px; }
+  .memory-columns { gap: 6px; }
+  .mem-card { min-height: 70px; padding: 8px 6px; }
+  .mem-term-word { font-size: 13px; }
+  .explore-hero-title { font-size: 24px; }
+  .deck-hero-title { font-size: 22px; }
+}
