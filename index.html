@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StepWise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=DM+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     GLOBAL NAV (single instance)
+════════════════════════════════════════ -->
+<nav id="app-nav">
+  <div class="logo">StepWise<span class="logo-dot">.</span></div>
+  <ul class="nav-links">
+    <li><a href="#" data-nav="home"     data-action="showHome"     class="active">Home</a></li>
+    <li><a href="#" data-nav="explore"  data-action="showExplore">Explore</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="streak-badge">🔥 Start your streak!</div>
+    <div class="avatar" id="nav-avatar" data-action="showAccount" style="cursor:pointer;" title="My account">L</div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     CONTENT SHELL (sidebar + view-host + right-panel)
+     data-layout="three-col" for home/goal, "two-col" for others
+════════════════════════════════════════ -->
+<div id="content-shell" data-layout="two-col">
+
+  <!-- ── VIEW HOST (standard views live here) ── -->
+  <div id="view-host">
+
+    <!-- ════════════════════════════════
+         HOME VIEW
+    ════════════════════════════════ -->
+    <div id="app-home" class="view">
+      <main>
+        <div class="page-header animate d1">
+          <div>
+            <h1>Good morning, <em>Alex</em> ✨</h1>
+            <p>You have 8 cards due for review today</p>
+          </div>
+          <button class="btn-primary" data-action="showCreateDeck">＋ New Deck</button>
+        </div>
+
+       <!--- <div class="stats-row">
+          <div class="stat-card animate d2">
+            <div class="stat-label">Words Learned</div>
+            <div class="stat-value">347</div>
+            <div class="stat-sub">↑ 23 this week</div>
+          </div>
+          <div class="stat-card animate d3">
+            <div class="stat-label">Mastery Rate</div>
+            <div class="stat-value">84%</div>
+            <div class="stat-sub">↑ 4% from last week</div>
+          </div>
+          <div class="stat-card animate d4">
+            <div class="stat-label">Cards Reviewed</div>
+            <div class="stat-value">1.2k</div>
+            <div class="stat-sub">Across 6 decks</div>
+          </div>
+        </div> -->
+
+        <!-- Featured word card -->
+        <div class="featured-card animate d3">
+          <div class="featured-label"><span></span> Word of the Day</div>
+          <div class="featured-word">Ephemeral</div>
+          <div class="featured-phonetic">/ɪˈfem.ər.əl/</div>
+          <div class="featured-definition">
+            Lasting for a very short time; transitory. Often used to describe things that exist only briefly before fading away.
+          </div>
+          <div class="featured-breakdown">
+            <div class="breakdown-pill"><div class="pill-key">EPI</div><div class="pill-val">upon / above</div></div>
+            <div class="breakdown-pill"><div class="pill-key">HĒMER</div><div class="pill-val">day (Greek)</div></div>
+            <div class="breakdown-pill"><div class="pill-key">AL</div><div class="pill-val">relating to</div></div>
+          </div>
+          <div class="featured-actions">
+            <button class="featured-btn primary" data-action="featuredStudyNow">Study Now →</button>
+            <button class="featured-btn secondary" id="featured-add-btn" data-action="featuredAddToDeck">Add to Deck</button>
+            <button class="featured-btn secondary" data-action="featuredListen">🔊 Listen</button>
+          </div>
+        </div>
+
+        <!-- Continue Learning -->
+        <div class="section-header animate d4">
+          <div class="section-title">Continue Learning</div>
+          <a class="see-all" href="#">See all →</a>
+        </div>
+        <div class="cards-grid">
+
+          <div class="flashcard animate d4" data-deck-color="amber" data-action="showDeck" data-arg1="amber" data-arg2="SAT / GRE Prep" style="cursor:pointer;">
+   
+            <span class="deck-tag amber" title="Go to SAT / GRE Prep deck">
+              <span class="deck-dot"></span>📖 SAT / GRE Prep<span class="deck-tag-arrow">→</span>
+            </span>
+            <div class="flashcard-emoji-row">🌙 📅</div>
+            <div class="flashcard-word">Mundane</div>
+            <div class="flashcard-parts">
+              <div class="part-row"><span class="part-key">MUN</span>→ like "moon" — distant, always there</div>
+              <div class="part-row"><span class="part-key">DAIN</span>→ like "day" — everyday routine</div>
+            </div>
+          </div>
+
+          <div class="flashcard animate d5" data-deck-color="terracotta" data-action="showDeck" data-arg1="terracotta" data-arg2="Business English" style="cursor:pointer;">
+            <span class="deck-tag terracotta" title="Go to Business English deck">
+              <span class="deck-dot"></span>💼 Business English<span class="deck-tag-arrow">→</span>
+            </span>
+            <div class="flashcard-emoji-row">💵 🔔</div>
+            <div class="flashcard-word">Credible</div>
+            <div class="flashcard-parts">
+              <div class="part-row"><span class="part-key">CRED</span>→ like "credit" — trust &amp; belief</div>
+              <div class="part-row"><span class="part-key">–IBLE</span>→ capable of being</div>
+            </div>
+          </div>
+
+          <div class="flashcard animate d5" data-deck-color="sage" data-action="showDeck" data-arg1="sage" data-arg2="Nature &amp; Science" style="cursor:pointer;">
+          
+            <span class="deck-tag sage" title="Go to Nature &amp; Science deck">
+              <span class="deck-dot"></span>🌿 Nature &amp; Science<span class="deck-tag-arrow">→</span>
+            </span>
+            <div class="flashcard-emoji-row">🌊 📖</div>
+            <div class="flashcard-word">Ambiguous</div>
+            <div class="flashcard-parts">
+              <div class="part-row"><span class="part-key">AMBI</span>→ both ways, around</div>
+              <div class="part-row"><span class="part-key">–GUOUS</span>→ leading / driving</div>
+            </div>
+          </div>
+
+          <div class="flashcard animate d6" data-deck-color="lavender" data-action="showDeck" data-arg1="lavender" data-arg2="Legal Terms" style="cursor:pointer;">
+           
+            <span class="deck-tag lavender" title="Go to Legal Terms deck">
+              <span class="deck-dot"></span>⚖️ Legal Terms<span class="deck-tag-arrow">→</span>
+            </span>
+            <div class="flashcard-emoji-row">⚡ ✨</div>
+            <div class="flashcard-word">Vivacious</div>
+            <div class="flashcard-parts">
+              <div class="part-row"><span class="part-key">VIV</span>→ like "vivid" — alive, lively</div>
+              <div class="part-row"><span class="part-key">–IOUS</span>→ full of</div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div><!-- /#app-home -->
+
+    <!-- ════════════════════════════════
+         DECK VIEW
+    ════════════════════════════════ -->
+    <div id="deck-view" class="view">
+      <div class="dv-page">
+
+        <!-- Top nav -->
+        <div class="dv-topbar">
+          <button class="back-btn" data-action="showMyDecks">← My Decks</button>
+          <div class="dv-topbar-actions">
+            <button class="dv-icon-btn" data-action="renameDeck" title="Rename deck">✎</button>
+            <button class="dv-icon-btn dv-icon-btn-danger" id="deck-delete-btn" data-action="showDeleteConfirm" data-arg2="deck" title="Delete deck">🗑</button>
+          </div>
+        </div>
+
+        <!-- Colored header -->
+        <div class="dv-header" id="deck-hero-bg">
+          <div class="dv-header-body">
+            <div class="dv-label" id="deck-breadcrumb-inner">My Decks · SAT / GRE Prep</div>
+            <div class="dv-title" id="deck-hero-title">SAT / GRE Prep</div>
+            <div class="dv-desc">Master high-frequency vocabulary for standardized tests. Each word broken into memorable sound-chunks so it actually sticks.</div>
+         <!-- <div class="dv-stats">
+              <div class="dhs-item"><div class="dhs-val">48</div><div class="dhs-label">words</div></div>
+              <div class="dv-stat-sep"></div>
+              <div class="dhs-item"><div class="dhs-val">58%</div><div class="dhs-label">mastered</div></div>
+              <div class="dv-stat-sep"></div>
+              <div class="dhs-item"><div class="dhs-val">12</div><div class="dhs-label">due today</div></div>
+              <div class="dv-stat-sep"></div>
+              <div class="dhs-item"><div class="dhs-val">~18m</div><div class="dhs-label">session</div></div>
+           </div>-->
+          </div>
+          <div class="dv-header-progress">
+            <div class="dv-header-progress-fill" style="width:58%"></div>
+          </div>
+        </div>
+
+        <!-- Action bar -->
+        <div class="dv-actions">
+          <button class="dv-study-btn" data-action="showStudy">▶ Study Now</button>
+          <div class="dv-mode-strip">
+            <button class="dv-mode-btn" data-action="showMultipleChoice">🧩 Quiz</button>
+            <button class="dv-mode-btn" data-action="showMemory">🎴 Memory</button>
+          </div>
+          <button class="dv-import-btn" data-action="showImportModal">↑ Import</button>
+        </div>
+
+        <!-- Tabs + word list -->
+       
+        <!-- Word list — populated by _renderWordList() on deck open -->
+        <div class="word-list" id="word-list">
+
+          <div class="word-row" id="wr-mundane" data-action="toggleWord" data-arg1="mundane">
+            <span class="wr-emoji">🌙</span>
+            <div class="wr-main">
+              <div class="wr-top"><span class="wr-word">Mundane</span><span class="wr-phonetic">/mʌnˈdeɪn/</span></div>
+              <div class="wr-parts"><span class="wr-part-pill"><strong>MUN</strong> → moon</span><span class="wr-part-pill"><strong>DAIN</strong> → day</span></div>
+            </div>
+           
+            <button class="wr-delete" data-action="deleteCard" data-arg1="mundane" title="Delete">✕</button>
+          </div>
+          <div class="word-detail" id="wd-mundane">
+            <div class="wd-meaning">
+              <div class="wd-accent-bar"></div>
+              <div><div class="wd-section-label">Meaning</div><p class="wd-definition">Lacking excitement or interest; dull and ordinary.</p></div>
+            </div>
+            <div class="wd-context">
+              <div class="wd-section-label">In context</div>
+              <span class="wd-quote">"</span>
+              <p class="wd-example">"After years in the field, even the most thrilling discoveries could feel <span class="wd-highlight">mundane</span>."</p>
+            </div>
+            <div class="wd-actions">
+              <button class="wd-btn">✓ Know it</button>
+              <button class="wd-btn">Still learning</button>
+            </div>
+          </div>
+
+          <div class="word-row" id="wr-ephemeral" data-action="toggleWord" data-arg1="ephemeral">
+            <span class="wr-emoji">🌸</span>
+            <div class="wr-main">
+              <div class="wr-top"><span class="wr-word">Ephemeral</span><span class="wr-phonetic">/ɪˈfem.ər.əl/</span></div>
+              <div class="wr-parts"><span class="wr-part-pill"><strong>EPI</strong> → upon</span><span class="wr-part-pill"><strong>HĒMER</strong> → day</span><span class="wr-part-pill"><strong>–AL</strong> → adj.</span></div>
+            </div>
+            
+            <button class="wr-delete" data-action="deleteCard" data-arg1="ephemeral" title="Delete">✕</button>
+          </div>
+          <div class="word-detail" id="wd-ephemeral">
+            <div class="wd-meaning">
+              <div class="wd-accent-bar"></div>
+              <div><div class="wd-section-label">Meaning</div><p class="wd-definition">Lasting for a very short time; transitory.</p></div>
+            </div>
+            <div class="wd-context">
+              <div class="wd-section-label">In context</div>
+              <span class="wd-quote">"</span>
+              <p class="wd-example">"The <span class="wd-highlight">ephemeral</span> beauty of cherry blossoms makes them all the more precious."</p>
+            </div>
+            <div class="wd-actions">
+              <button class="wd-btn">✓ Know it</button>
+              <button class="wd-btn">Still learning</button>
+            </div>
+          </div>
+
+          <div class="word-row" id="wr-loquacious" data-action="toggleWord" data-arg1="loquacious">
+            <span class="wr-emoji">💬</span>
+            <div class="wr-main">
+              <div class="wr-top"><span class="wr-word">Loquacious</span><span class="wr-phonetic">/loʊˈkweɪ.ʃəs/</span></div>
+              <div class="wr-parts"><span class="wr-part-pill"><strong>LOQU</strong> → talk</span><span class="wr-part-pill"><strong>–ACIOUS</strong> → full of</span></div>
+            </div>
+           
+            <button class="wr-delete" data-action="deleteCard" data-arg1="loquacious" title="Delete">✕</button>
+          </div>
+          <div class="word-detail" id="wd-loquacious">
+            <div class="wd-meaning">
+              <div class="wd-accent-bar"></div>
+              <div><div class="wd-section-label">Meaning</div><p class="wd-definition">Tending to talk a great deal; garrulous.</p></div>
+            </div>
+            <div class="wd-context">
+              <div class="wd-section-label">In context</div>
+              <span class="wd-quote">"</span>
+              <p class="wd-example">"Her <span class="wd-highlight">loquacious</span> nature made her the life of every dinner party."</p>
+            </div>
+            <div class="wd-actions">
+              <button class="wd-btn">✓ Know it</button>
+              <button class="wd-btn">Still learning</button>
+            </div>
+          </div>
+
+          <div class="word-row" id="wr-melancholy" data-action="toggleWord" data-arg1="melancholy">
+            <span class="wr-emoji">🌧️</span>
+            <div class="wr-main">
+              <div class="wr-top"><span class="wr-word">Melancholy</span><span class="wr-phonetic">/ˈmel.ən.kɒl.i/</span></div>
+              <div class="wr-parts"><span class="wr-part-pill"><strong>MELAN</strong> → black</span><span class="wr-part-pill"><strong>CHOLE</strong> → bile / mood</span></div>
+            </div>
+            
+            <button class="wr-delete" data-action="deleteCard" data-arg1="melancholy" title="Delete">✕</button>
+          </div>
+          <div class="word-detail" id="wd-melancholy">
+            <div class="wd-meaning">
+              <div class="wd-accent-bar"></div>
+              <div><div class="wd-section-label">Meaning</div><p class="wd-definition">A deep, pensive, and long-lasting sadness.</p></div>
+            </div>
+            <div class="wd-context">
+              <div class="wd-section-label">In context</div>
+              <span class="wd-quote">"</span>
+              <p class="wd-example">"A <span class="wd-highlight">melancholy</span> mood settled over the house as autumn arrived."</p>
+            </div>
+            <div class="wd-actions">
+              <button class="wd-btn">✓ Know it</button>
+              <button class="wd-btn">Still learning</button>
+            </div>
+          </div>
+
+          <div class="word-row" id="wr-tenacious" data-action="toggleWord" data-arg1="tenacious">
+            <span class="wr-emoji">🦅</span>
+            <div class="wr-main">
+              <div class="wr-top"><span class="wr-word">Tenacious</span><span class="wr-phonetic">/tɪˈneɪ.ʃəs/</span></div>
+              <div class="wr-parts"><span class="wr-part-pill"><strong>TEN</strong> → hold</span><span class="wr-part-pill"><strong>–ACIOUS</strong> → full of</span></div>
+            </div>
+          
+            <button class="wr-delete" data-action="deleteCard" data-arg1="tenacious" title="Delete">✕</button>
+          </div>
+          <div class="word-detail" id="wd-tenacious">
+            <div class="wd-meaning">
+              <div class="wd-accent-bar"></div>
+              <div><div class="wd-section-label">Meaning</div><p class="wd-definition">Tending to keep a firm hold; very persistent.</p></div>
+            </div>
+            <div class="wd-context">
+              <div class="wd-section-label">In context</div>
+              <span class="wd-quote">"</span>
+              <p class="wd-example">"Her <span class="wd-highlight">tenacious</span> pursuit of the truth earned her a Pulitzer Prize."</p>
+            </div>
+            <div class="wd-actions">
+              <button class="wd-btn">✓ Know it</button>
+              <button class="wd-btn">Still learning</button>
+            </div>
+          </div>
+
+          
+          <div class="md-add-card" data-action="addInlineCard" style="margin: 10px 0; min-height: 80px; width: 100%; max-width: none;">
+            <div class="md-add-icon" style="width: 32px; height: 32px; font-size: 18px;">＋</div>
+            <div class="md-add-label" style="font-size: 12px;">Add Card</div>
+          </div>
+
+        </div><!-- /word-list -->
+
+      </div><!-- /dv-page -->
+
+    </div><!-- /#deck-view -->
+
+    <!-- ════════════════════════════════
+         MY DECKS VIEW
+    ════════════════════════════════ -->
+    <div id="my-decks-view" class="view active">
+      <div class="mdecks-layout">
+
+        <!-- ── SIDEBAR ── -->
+     <!---   <aside class="mdecks-sidebar">
+
+          <div class="mdecks-sidebar-section">
+            <div class="mdecks-sidebar-label">Study</div>
+            <button class="mdecks-nav-item active" data-action="showFlashcards">
+              <span class="mdecks-nav-icon">🗂️</span>Flashcards
+            </button>
+            <button class="mdecks-nav-item" data-action="showPractice">
+              <span class="mdecks-nav-icon">📝</span>Quizzes
+            </button>
+          </div>
+
+          <div class="mdecks-sidebar-section">
+            <div class="mdecks-sidebar-label">Library</div>
+            <button class="mdecks-cat-item active" data-action="filterCategory" data-arg1="all">
+              <span class="mdecks-cat-dot" style="background:var(--ink)"></span>All decks
+            </button>
+            <button class="mdecks-cat-item" data-action="filterCategory" data-arg1="Language">
+              <span class="mdecks-cat-dot" style="background:#E8A832"></span>Language
+            </button>
+            <button class="mdecks-cat-item" data-action="filterCategory" data-arg1="Business">
+              <span class="mdecks-cat-dot" style="background:#C4603A"></span>Business
+            </button>
+            <button class="mdecks-cat-item" data-action="filterCategory" data-arg1="Science">
+              <span class="mdecks-cat-dot" style="background:#5B7A5E"></span>Science
+            </button>
+          </div>
+  -->
+        </aside><!-- /.mdecks-sidebar -->
+
+        <div class="md-main">
+        <div class="md-header">
+          <div class="md-title">Welcome <em id="md-welcome-name">Learner</em></div>
+        </div>
+
+        <!-- Stat cards 
+        <div class="stats-row" style="margin-bottom:28px;">
+          <div class="stat-card">
+            <div class="stat-label">Words Learned</div>
+            <div class="stat-value">347</div>
+            <div class="stat-sub">↑ 23 this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Cards Reviewed</div>
+            <div class="stat-value">1.2k</div>
+            <div class="stat-sub">Across 6 decks</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Current Streak</div>
+            <div class="stat-value" style="display:flex;align-items:baseline;gap:8px;">14<span style="font-size:20px;">🔥</span></div>
+            <div class="stat-sub">days · personal best 21</div>
+          </div>
+        </div>-->
+
+        <!-- Folders -->
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:#9E9289;">Folders</div>
+          
+          </div>
+          <!-- Folder chips — populated by _renderFolderList() -->
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;" id="folder-list">
+            <div class="md-folder md-folder-add" data-action="showNewFolderInput">
+              <span class="folder-icon">＋</span><span class="folder-name">New Folder</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:#9E9289;">Sets</div>
+          <div style="display:flex;gap:4px;">
+            <button class="sort-btn" data-action="sortSets" data-arg1="asc" title="Sort A → Z">↑</button>
+            <button class="sort-btn" data-action="sortSets" data-arg1="desc" title="Sort Z → A">↓</button>
+          </div>
+        </div>
+
+        <!-- Deck grid — populated by _renderDeckGrid() -->
+        <div class="md-grid" id="md-sets-grid">
+          <div class="md-add-card" data-action="showCreateDeck">
+            <div class="md-add-icon">＋</div>
+            <div class="md-add-label">New Deck</div>
+          </div>
+        </div>
+
+    
+        </div><!-- /.md-main -->
+      </div><!-- /.mdecks-layout -->
+    </div><!-- /#my-decks-view -->
+
+    <!-- ════════════════════════════════
+         GOAL VIEW
+    ════════════════════════════════ -->
+    <div id="goal-view" class="view">
+      <div class="goal-main">
+        <!-- Hero -->
+        <div class="goal-hero">
+          <div class="goal-hero-left">
+            <div class="goal-hero-streak"><span></span> 14-day streak</div>
+            <div class="goal-hero-title">Keep it up,<br>Alex! 🎯</div>
+            <div class="goal-hero-sub">19 of 30 words done today · 11 left to go</div>
+          </div>
+          <div class="goal-hero-flame">🔥</div>
+        </div>
+
+        <!-- Progress circles -->
+        <div class="goal-circle-wrap">
+          <div class="goal-circle-card">
+            <svg class="goal-ring-svg" width="90" height="90" viewBox="0 0 90 90">
+              <circle class="goal-ring-track" cx="45" cy="45" r="36"/>
+              <circle class="goal-ring-fill" cx="45" cy="45" r="36" stroke="var(--amber)" stroke-dasharray="226" stroke-dashoffset="86"/>
+              <text class="goal-ring-text-val" x="45" y="41" fill="var(--ink)">19</text>
+              <text class="goal-ring-text-sub" x="45" y="54" fill="#9E9289">/ 30</text>
+            </svg>
+            <div class="goal-circle-info">
+              <div class="goal-circle-label">Words Today</div>
+              <div class="goal-circle-val">19 <span style="font-size:16px;color:#9E9289">/ 30</span></div>
+              <div class="goal-circle-sub">63% complete</div>
+              <div class="goal-circle-bar"><div class="goal-circle-bar-fill" style="width:63%"></div></div>
+            </div>
+          </div>
+          <div class="goal-circle-card">
+            <svg class="goal-ring-svg" width="90" height="90" viewBox="0 0 90 90">
+              <circle class="goal-ring-track" cx="45" cy="45" r="36"/>
+              <circle class="goal-ring-fill" cx="45" cy="45" r="36" stroke="var(--sage)" stroke-dasharray="226" stroke-dashoffset="40"/>
+              <text class="goal-ring-text-val" x="45" y="41" fill="var(--ink)">14</text>
+              <text class="goal-ring-text-sub" x="45" y="54">days</text>
+            </svg>
+            <div class="goal-circle-info">
+              <div class="goal-circle-label">Current Streak</div>
+              <div class="goal-circle-val">14 <span style="font-size:14px;color:#9E9289">days</span></div>
+              <div class="goal-circle-sub">Best: 21 days</div>
+              <div class="goal-circle-bar"><div class="goal-circle-bar-fill" style="width:67%;background:var(--sage)"></div></div>
+            </div>
+          </div>
+          <div class="goal-circle-card">
+            <svg class="goal-ring-svg" width="90" height="90" viewBox="0 0 90 90">
+              <circle class="goal-ring-track" cx="45" cy="45" r="36"/>
+              <circle class="goal-ring-fill" cx="45" cy="45" r="36" stroke="var(--lavender)" stroke-dasharray="226" stroke-dashoffset="66"/>
+              <text class="goal-ring-text-val" x="45" y="41" fill="var(--ink)">84%</text>
+              <text class="goal-ring-text-sub" x="45" y="54">mastery</text>
+            </svg>
+            <div class="goal-circle-info">
+              <div class="goal-circle-label">Mastery Rate</div>
+              <div class="goal-circle-val">84<span style="font-size:18px;color:#9E9289">%</span></div>
+              <div class="goal-circle-sub">↑ 4% from last week</div>
+              <div class="goal-circle-bar"><div class="goal-circle-bar-fill" style="width:84%;background:var(--lavender)"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's sessions -->
+        <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:14px;">Today's Sessions</div>
+        <div class="goal-sessions-grid">
+          <div class="goal-session done">
+            <div class="gs-check">✓</div><div class="gs-icon">🌅</div>
+            <div class="gs-title">Morning Warmup</div>
+            <div class="gs-meta">10 cards · completed 8:14am</div>
+            <span class="gs-badge" style="background:#EAF3EB;color:#2E5430;">10 words done</span>
+          </div>
+          <div class="goal-session active">
+            <div class="gs-icon">☀️</div>
+            <div class="gs-title">Afternoon Review</div>
+            <div class="gs-meta">9 / 15 cards done</div>
+            <span class="gs-badge" style="background:#FFF4DC;color:#9A6800;">In progress</span>
+          </div>
+          <div class="goal-session locked">
+            <div class="gs-lock">🔒</div><div class="gs-icon">🌙</div>
+            <div class="gs-title">Evening Session</div>
+            <div class="gs-meta">5 new words · unlocks at 7pm</div>
+            <span class="gs-badge" style="background:var(--cream);color:#9E9289;">Locked</span>
+          </div>
+        </div>
+
+        <!-- Weekly strip -->
+        <div class="goal-week">
+          <div class="goal-week-title">This Week</div>
+          <div class="goal-week-days">
+            <div class="gwd"><div class="gwd-label">Mon</div><div class="gwd-circle done">✓</div><div class="gwd-words">32w</div></div>
+            <div class="gwd"><div class="gwd-label">Tue</div><div class="gwd-circle done">✓</div><div class="gwd-words">28w</div></div>
+            <div class="gwd"><div class="gwd-label">Wed</div><div class="gwd-circle done">✓</div><div class="gwd-words">35w</div></div>
+            <div class="gwd"><div class="gwd-label">Thu</div><div class="gwd-circle done">✓</div><div class="gwd-words">22w</div></div>
+            <div class="gwd"><div class="gwd-label">Fri</div><div class="gwd-circle missed">✗</div><div class="gwd-words">0w</div></div>
+            <div class="gwd"><div class="gwd-label">Sat</div><div class="gwd-circle today">19</div><div class="gwd-words">today</div></div>
+            <div class="gwd"><div class="gwd-label">Sun</div><div class="gwd-circle future">—</div><div class="gwd-words">—</div></div>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="goal-xp-row">
+          <div class="goal-xp-card">
+            <div class="gxp-title">Streak History</div>
+            <div style="display:flex;align-items:flex-end;gap:6px;height:52px;margin-bottom:10px;">
+              <div style="flex:1;background:var(--sage);border-radius:4px 4px 0 0;height:100%;opacity:0.5"></div>
+              <div style="flex:1;background:var(--sage);border-radius:4px 4px 0 0;height:80%;opacity:0.6"></div>
+              <div style="flex:1;background:var(--sage);border-radius:4px 4px 0 0;height:60%;opacity:0.6"></div>
+              <div style="flex:1;background:var(--terracotta);border-radius:4px 4px 0 0;height:10%;opacity:0.5"></div>
+              <div style="flex:1;background:var(--amber);border-radius:4px 4px 0 0;height:90%;"></div>
+              <div style="flex:1;background:var(--amber);border-radius:4px 4px 0 0;height:70%;"></div>
+              <div style="flex:1;background:var(--amber);border-radius:4px 4px 0 0;height:85%;"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:#9E9289;margin-bottom:10px;">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+            <div style="display:flex;gap:16px;">
+              <div><div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;">14</div><div style="font-size:11px;color:#9E9289;">Current</div></div>
+              <div><div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;">21</div><div style="font-size:11px;color:#9E9289;">Best ever</div></div>
+            </div>
+          </div>
+          <div class="goal-xp-card">
+            <div class="gxp-title">Words This Week</div>
+            <div style="font-family:'Fraunces',serif;font-size:34px;font-weight:900;margin-bottom:4px;">137</div>
+            <div style="font-size:12px;color:#9E9289;margin-bottom:12px;">words reviewed this week</div>
+            <div class="gxp-bar"><div class="gxp-bar-fill" style="width:69%;background:var(--terracotta)"></div></div>
+            <div style="font-size:11px;color:#9E9289;margin-top:6px;">137 / 200 weekly goal</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /#goal-view -->
+
+    <!-- ════════════════════════════════
+         FOLDER VIEW
+    ════════════════════════════════ -->
+    <div id="folder-view" class="view">
+      <div class="create-main">
+        <button class="create-back-btn" data-action="showMyDecks">← My Decks</button>
+        <div class="folder-view-header">
+          <div class="create-page-title" id="folder-view-title"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+            <button class="btn-secondary-outline" id="folder-delete-btn" data-action="showDeleteConfirm" data-arg2="folder" title="Delete folder" style="padding:10px 18px;font-size:13px;white-space:nowrap;">Delete folder</button>
+            <button class="btn-secondary-outline" style="padding:10px 18px;font-size:13px;" data-action="showAddDeckPicker">Add existing</button>
+            <button class="btn-primary" style="padding:10px 18px;font-size:13px;" data-action="createDeckInFolder">＋ New Deck</button>
+          </div>
+        </div>
+        <div id="folder-empty-state" class="folder-empty">
+          <div class="folder-empty-icon">📂</div>
+          <div class="folder-empty-title">No decks yet</div>
+          <div class="folder-empty-sub">Create a new deck or add an existing one to this folder</div>
+        </div>
+        <div class="md-grid" id="folder-decks-grid" style="display:none;"></div>
+      </div>
+    </div><!-- /#folder-view -->
+
+    <!-- ════════════════════════════════
+         CREATE DECK VIEW
+    ════════════════════════════════ -->
+    <div id="create-deck-view" class="view">
+      <div class="create-main">
+        <button class="create-back-btn" data-action="showHome">← Back</button>
+        <div class="create-page-title">New <em>deck</em></div>
+
+        <!-- A2: Pulsing preview card -->
+        <div class="cdv-preview-a2" id="cdv-preview-card" data-action="toggleNamePanel">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div class="cdv-a2-icon" id="preview-icon">📖</div>
+            <div style="flex:1;min-width:0;">
+              <div class="cdv-a2-name" id="preview-name">Tap to name your deck</div>
+              <div class="cdv-a2-meta">0 cards</div>
+            </div>
+            <div class="cdv-a2-tap-badge" id="cdv-tap-badge">TAP TO NAME</div>
+          </div>
+        </div>
+
+        <!-- A2: Slide-down name drawer (attached to card) -->
+        <div class="cdv-name-drawer" id="cdv-name-drawer">
+          <div class="cdv-name-drawer-inner">
+            <input class="create-input" id="cdv-name-input" type="text"
+  placeholder="e.g. Spanish Verbs, Medical Terms…"
+  autocomplete="new-password"
+  autocorrect="off"
+  autocapitalize="off"
+  spellcheck="false"
+  oninput="updateDeckNamePreview(this.value)"
+  onkeydown="if(event.key==='Enter')confirmDeckName()">
+            <button class="cdv-name-done" id="cdv-name-done" data-action="confirmDeckName">Done ✓</button>
+          </div>
+        </div>
+
+        <!-- Settings panel: colour + icon (always visible) -->
+        <div class="cdv-settings-panel">
+          <div>
+            <label class="create-label">Colour</label>
+            <div class="color-picker">
+              <div class="color-swatch selected" style="background:#FFD166" data-action="selectColor" data-arg1="#FFD166"></div>
+              <div class="color-swatch" style="background:#74B7E8" data-action="selectColor" data-arg1="#74B7E8"></div>
+              <div class="color-swatch" style="background:#F4A7B9" data-action="selectColor" data-arg1="#F4A7B9"></div>
+              <div class="color-swatch" style="background:#7DD9A8" data-action="selectColor" data-arg1="#7DD9A8"></div>
+              <div class="color-swatch" style="background:#578DDC" data-action="selectColor" data-arg1="#578DDC"></div>
+              <div class="color-swatch" style="background:#FF6675" data-action="selectColor" data-arg1="#FF6675"></div>
+            </div>
+          </div>
+          <div>
+            <label class="create-label">Icon</label>
+            <div class="emoji-quick-row">
+              <button class="emoji-quick selected" data-action="pickQuickEmoji" data-arg1="📖">📖</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="🎓">🎓</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="🌿">🌿</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="🔬">🔬</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="🎨">🎨</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="✈️">✈️</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="💼">💼</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="⭐">⭐</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="😊">😊</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="🧠">🧠</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="🌍">🌍</button>
+              <button class="emoji-quick" data-action="pickQuickEmoji" data-arg1="⚖️">⚖️</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method selection -->
+        <label class="create-label" style="margin-bottom:12px;">Add cards</label>
+        <div class="import-method-big">
+          <div class="imb-opt selected" data-action="selectMethod" data-arg1="notes">
+            <div class="imb-check">✓</div><div class="imb-icon">📋</div>
+            <div class="imb-title">Import from Notes</div>
+            <div class="imb-desc">Paste a word list or notes and extract cards automatically.</div>
+            <div class="imb-tag" style="background:#FFF4DC;color:#9A6800;">⚡ Fastest</div>
+          </div>
+          <div class="imb-opt" data-action="selectMethod" data-arg1="manual">
+            <div class="imb-check">✓</div><div class="imb-icon">✍️</div>
+            <div class="imb-title">Write My Own</div>
+            <div class="imb-desc">Add words and definitions one by one.</div>
+            <div class="imb-tag" style="background:#EAF3EB;color:#2E5430;">🎯 Most control</div>
+          </div>
+          <div class="imb-opt" data-action="selectMethod" data-arg1="ai">
+            <div class="imb-check">✓</div><div class="imb-icon">🤖</div>
+            <div class="imb-title">Let AI Find It</div>
+            <div class="imb-desc">Enter words and AI generates definitions for each.</div>
+            <div class="imb-tag" style="background:#EDE7F6;color:#4527A0;">✨ AI-powered</div>
+          </div>
+        </div>
+
+        <!-- Panel: Import notes -->
+        <div class="method-panel active" id="panel-notes">
+          <label class="create-label">Paste your notes or word list</label>
+          <textarea class="notes-paste-area" placeholder="e.g.&#10;&#10;Ephemeral - lasting a very short time&#10;Mundane - lacking excitement; dull&#10;Loquacious - tending to talk a great deal…" autocomplete="off" spellcheck="false"></textarea>
+          <div style="margin-top:14px;margin-bottom:18px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#9E9289;margin-bottom:8px;">Term separator</div>
+            <div style="display:flex;gap:7px;flex-wrap:wrap;" id="sep-picker">
+              <button class="sep-btn selected" data-action="selectSep" data-arg1="-"><code>word - definition</code></button>
+              <button class="sep-btn" data-action="selectSep" data-arg1=";"><code>word ; definition</code></button>
+              <button class="sep-btn" data-action="selectSep" data-arg1=":"><code>word : definition</code></button>
+              <button class="sep-btn" data-action="selectSep" data-arg1="custom">✏️ Custom…</button>
+            </div>
+            <div id="custom-sep-form" class="custom-sep-form" style="display:none;">
+              <div class="custom-sep-row">
+                <input class="cer-input custom-sep-field" placeholder="word" disabled>
+                <div class="custom-sep-mid">
+                  <input class="custom-sep-char" id="custom-sep-char" placeholder="÷" maxlength="8" autocomplete="off" spellcheck="false">
+                </div>
+                <input class="cer-input custom-sep-field" placeholder="definition" disabled>
+              </div>
+              <div class="custom-sep-hint">Type your separator character in the middle field</div>
+            </div>
+          </div>
+          <button class="btn-primary" style="width:100%;justify-content:center;padding:15px;" data-action="extractWithSep">Extract Cards →</button>
+        </div>
+
+        <!-- Panel: Manual -->
+        <div class="method-panel" id="panel-manual">
+          <label class="create-label">Your cards</label>
+          <div class="card-editor-list" id="card-editor-list">
+            <div class="card-editor-row">
+              <input class="cer-input" placeholder="Word or term…" value="Ephemeral" autocomplete="off" spellcheck="false">
+              <span class="cer-arrow">→</span>
+              <input class="cer-input" placeholder="Definition or hint…" value="Lasting only a short time; transitory" autocomplete="off" spellcheck="false">
+              <button class="cer-delete">✕</button>
+            </div>
+            <div class="card-editor-row">
+              <input class="cer-input" placeholder="Word or term…" value="Tenacious" autocomplete="off" spellcheck="false">
+              <span class="cer-arrow">→</span>
+              <input class="cer-input" placeholder="Definition or hint…" value="Holding firm; very persistent" autocomplete="off" spellcheck="false">
+              <button class="cer-delete">✕</button>
+            </div>
+            <div class="card-editor-row" style="opacity:0.5">
+              <input class="cer-input" placeholder="Word or term…" autocomplete="off" spellcheck="false">
+              <span class="cer-arrow">→</span>
+              <input class="cer-input" placeholder="Definition or hint…" autocomplete="off" spellcheck="false">
+              <button class="cer-delete">✕</button>
+            </div>
+          </div>
+          <button class="add-card-btn" data-action="addCardRow">＋ Add another card</button>
+        </div>
+
+        <!-- Panel: AI -->
+        <div class="method-panel" id="panel-ai">
+          <label class="create-label">Enter words for AI to look up</label>
+          <div class="ai-word-list" id="ai-word-list">
+            <div class="ai-word-row"><span class="awr-num">1</span><input class="awr-input" value="Ephemeral" placeholder="Enter a word…" autocomplete="off" spellcheck="false"><span class="awr-status">✅</span><button class="awr-delete">✕</button></div>
+            <div class="ai-word-row"><span class="awr-num">2</span><input class="awr-input" value="Melancholy" placeholder="Enter a word…" autocomplete="off" spellcheck="false"><span class="awr-status">✅</span><button class="awr-delete">✕</button></div>
+            <div class="ai-word-row"><span class="awr-num">3</span><input class="awr-input" value="Loquacious" placeholder="Enter a word…" autocomplete="off" spellcheck="false"><span class="awr-status">⏳</span><button class="awr-delete">✕</button></div>
+            <div class="ai-word-row"><span class="awr-num">4</span><input class="awr-input" placeholder="Enter a word…" autocomplete="off" spellcheck="false"><span class="awr-status"></span><button class="awr-delete">✕</button></div>
+          </div>
+          <button class="add-card-btn" style="margin-bottom:16px">＋ Add more words</button>
+          <button class="ai-generate-btn">✨ Generate Cards with AI</button>
+          <label class="create-label" style="margin-bottom:12px">AI-generated previews</label>
+          <div class="ai-result-preview">
+            <div class="arp-word">🌸 Ephemeral</div>
+            <div class="arp-def">Lasting for a very short time; transitory. From Greek "epi-" (upon) + "hēmera" (day).</div>
+            <div class="arp-parts"><span class="arp-part"><strong>EPI</strong> upon</span><span class="arp-part"><strong>HĒMER</strong> day</span><span class="arp-part"><strong>–AL</strong> relating to</span></div>
+            <div class="arp-actions">
+              <button class="arp-btn accept">✓ Accept</button>
+              <button class="arp-btn">✏️ Edit</button>
+              <button class="arp-btn">🔄 Regenerate</button>
+            </div>
+          </div>
+          <div class="ai-result-preview">
+            <div class="arp-word">🌧️ Melancholy</div>
+            <div class="arp-def">A deep, pensive sadness. From Greek "melas" (black) + "kholē" (bile).</div>
+            <div class="arp-parts"><span class="arp-part"><strong>MELAN</strong> black</span><span class="arp-part"><strong>CHOLE</strong> bile</span></div>
+            <div class="arp-actions">
+              <button class="arp-btn accept">✓ Accept</button>
+              <button class="arp-btn">✏️ Edit</button>
+              <button class="arp-btn">🔄 Regenerate</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="create-actions" style="margin-top:28px;">
+          <button class="btn-secondary-outline" data-action="showHome">Cancel</button>
+          <button class="btn-primary" data-action="createDeck">Create Deck →</button>
+        </div>
+      </div>
+    </div><!-- /#create-deck-view -->
+
+  </div><!-- /#view-host -->
+
+  <!-- ── RIGHT PANEL ── -->
+  <div id="right-panel">
+
+    <!-- Home right panel content -->
+    <div id="rp-home" class="active">
+    </div>
+
+    <!-- Goal right panel content -->
+    <div id="rp-goal">
+      <div class="gr-title">Reminders 🔔</div>
+      <div class="goal-reminder-card">
+        <div class="gr-sub">Study time nudges</div>
+        <div class="time-slots">
+          <div class="time-slot selected">8:00 AM</div>
+          <div class="time-slot">10:00 AM</div>
+          <div class="time-slot selected">2:00 PM</div>
+          <div class="time-slot">4:00 PM</div>
+          <div class="time-slot">7:00 PM</div>
+          <div class="time-slot selected">9:00 PM</div>
+        </div>
+      </div>
+      <div class="gr-title">Adjust Goal ⚙️</div>
+      <div class="goal-reminder-card">
+        <div class="gr-sub">Daily word target</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <div class="time-slot">10 words</div>
+          <div class="time-slot">20 words</div>
+          <div class="time-slot selected">30 words</div>
+          <div class="time-slot">50 words</div>
+        </div>
+        <div style="margin-top:14px;font-size:11px;color:#9E9289;line-height:1.6;">At 30 words/day you'll learn <strong style="color:var(--ink)">~900 words/month</strong> 📈</div>
+      </div>
+      <div class="gr-title">Motivation 💬</div>
+      <div style="background:var(--cream);border-radius:14px;padding:18px;">
+        <div style="font-family:'Fraunces',serif;font-size:16px;font-style:italic;line-height:1.55;margin-bottom:8px;">"The beautiful thing about learning is that no one can take it away from you."</div>
+        <div style="font-size:12px;color:#9E9289;">— B.B. King</div>
+      </div>
+    </div>
+
+  </div><!-- /#right-panel -->
+
+</div><!-- /#content-shell -->
+
+
+<!-- ════════════════════════════════════════
+     FULL VIEWS (explore, account — own internal grids)
+════════════════════════════════════════ -->
+
+<!-- ── EXPLORE VIEW ── -->
+<div id="explore-view" class="full-view">
+  <div class="ex-shell">
+    <div class="ex-sidebar-wrap">
+      <div class="ex-side-title">Browse</div>
+      <div class="ex-side-item active">🔭 Discover</div>
+      <div class="ex-side-item">⭐ Popular</div>
+      <div class="ex-side-item">🆕 New</div>
+      <div class="ex-side-item">📚 Staff picks</div>
+      <div class="ex-side-title">Categories</div>
+      <div class="ex-side-item">📖 Language &amp; Vocab</div>
+      <div class="ex-side-item">💼 Business</div>
+      <div class="ex-side-item">🔬 Science</div>
+      <div class="ex-side-item">⚖️ Law &amp; Politics</div>
+      <div class="ex-side-item">🌍 Geography</div>
+      <div class="ex-side-item">🎨 Arts &amp; Culture</div>
+      <div class="ex-side-item">🏥 Medicine</div>
+      <div class="ex-side-item">💻 Technology</div>
+    </div>
+    <div class="ex-main">
+      <div class="ex-header">
+        <div class="ex-title">Explore <em>decks</em></div>
+        <div class="ex-sub">Discover community-made sets and add them to your library</div>
+      </div>
+      <div class="ex-search-wrap">
+        <span class="ex-search-icon">🔍</span>
+        <input class="ex-search" placeholder="Search decks, topics, words…">
+      </div>
+      <div class="ex-cats">
+        <div class="ex-cat active">All</div>
+        <div class="ex-cat">📖 Vocabulary</div>
+        <div class="ex-cat">💼 Business</div>
+        <div class="ex-cat">🔬 Science</div>
+        <div class="ex-cat">⚖️ Law</div>
+        <div class="ex-cat">🌍 Geography</div>
+        <div class="ex-cat">🎨 Arts</div>
+        <div class="ex-cat">🏥 Medicine</div>
+        <div class="ex-cat">💻 Tech</div>
+      </div>
+      <div class="ex-featured" data-action="showDeck" data-arg1="lavender" data-arg2="Philosophy of Mind">
+        <div class="ex-feat-label">✨ Featured this week</div>
+        <div class="ex-feat-title">Philosophy of Mind</div>
+        <div class="ex-feat-desc">From qualia to consciousness — 60 essential terms used in cognitive science, philosophy and neuroscience. Curated by Prof. R. Chen.</div>
+        <div class="ex-feat-meta">
+          <div class="ex-feat-stat"><strong>60</strong> words</div>
+          <div class="ex-feat-stat"><strong>4,821</strong> learners</div>
+          <div class="ex-feat-stat"><strong>4.9 ★</strong> rating</div>
+          <button class="ex-feat-btn">Preview deck →</button>
+        </div>
+      </div>
+      <div class="ex-section-title">Trending now 🔥</div>
+      <div class="ex-grid">
+        <div class="ex-card" data-action="showDeck" data-arg1="amber" data-arg2="Advanced GRE Vocab">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">📖</div>
+          <div class="ex-card-body"><div class="ex-card-name">Advanced GRE Vocab</div><div class="ex-card-meta">120 words · by stepwise_official</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Test Prep</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">⭐ 4.8</span></div></div>
+        </div>
+        <div class="ex-card" data-action="showDeck" data-arg1="terracotta" data-arg2="Startup &amp; VC Terms">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#EEBDA8,#D98B6E)">🚀</div>
+          <div class="ex-card-body"><div class="ex-card-name">Startup &amp; VC Terms</div><div class="ex-card-meta">85 words · by venture_vocab</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">Business</span><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">⭐ 4.7</span></div></div>
+        </div>
+        <div class="ex-card" data-action="showDeck" data-arg1="sage" data-arg2="Neuroscience Basics">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#B8D4BA,#89B08C)">🧠</div>
+          <div class="ex-card-body"><div class="ex-card-name">Neuroscience Basics</div><div class="ex-card-meta">72 words · by dr_sylvia_k</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">Science</span><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">⭐ 4.9</span></div></div>
+        </div>
+        <div class="ex-card" data-action="showDeck" data-arg1="lavender" data-arg2="Latin Legal Phrases">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#C8C2E4,#A89CCE)">⚖️</div>
+          <div class="ex-card-body"><div class="ex-card-name">Latin Legal Phrases</div><div class="ex-card-meta">55 words · by law_school_hub</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">Law</span><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">⭐ 4.6</span></div></div>
+        </div>
+        <div class="ex-card" data-action="showDeck" data-arg1="amber" data-arg2="IELTS Academic Words">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">🌐</div>
+          <div class="ex-card-body"><div class="ex-card-name">IELTS Academic Words</div><div class="ex-card-meta">100 words · by english_edge</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Test Prep</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">⭐ 4.5</span></div></div>
+        </div>
+        <div class="ex-card" data-action="showDeck" data-arg1="sage" data-arg2="Environmental Science">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#B8D4BA,#89B08C)">🌿</div>
+          <div class="ex-card-body"><div class="ex-card-name">Environmental Science</div><div class="ex-card-meta">68 words · by eco_learn</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">Science</span><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">⭐ 4.7</span></div></div>
+        </div>
+      </div>
+      <div class="ex-section-title">Staff picks 📚</div>
+      <div class="ex-grid">
+        <div class="ex-card" data-action="showDeck" data-arg1="terracotta" data-arg2="Medical Terminology">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#EEBDA8,#D98B6E)">🏥</div>
+          <div class="ex-card-body"><div class="ex-card-name">Medical Terminology</div><div class="ex-card-meta">150 words · by medvocab_pro</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">Medicine</span><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">⭐ 4.9</span></div></div>
+        </div>
+        <div class="ex-card" data-action="showDeck" data-arg1="lavender" data-arg2="Literary Devices">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#C8C2E4,#A89CCE)">✍️</div>
+          <div class="ex-card-body"><div class="ex-card-name">Literary Devices</div><div class="ex-card-meta">44 words · by lit_teacher</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">Language</span><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">⭐ 4.8</span></div></div>
+        </div>
+        <div class="ex-card" data-action="showDeck" data-arg1="amber" data-arg2="Cognitive Biases">
+          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">🧐</div>
+          <div class="ex-card-body"><div class="ex-card-name">Cognitive Biases</div><div class="ex-card-meta">36 words · by mindhacks</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Psychology</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">⭐ 4.9</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /#explore-view -->
+
+<!-- ── ACCOUNT VIEW ── -->
+<div id="account-view" class="full-view">
+  <div class="acc-shell">
+    <div class="acc-sidenav">
+      <div class="acc-profile-block">
+        <div class="acc-avatar-large" id="acc-avatar-large">L</div>
+        <div class="acc-name" id="acc-name-display">Learner</div>
+        <div class="acc-handle" id="acc-handle-display">@learner · Free plan</div>
+        <div class="acc-joined" id="acc-joined-display"></div>
+      </div>
+      <div class="acc-nav-item active" data-action="switchAccSection" data-arg1="profile"><span class="acc-nav-icon">👤</span> Profile</div>
+      <div class="acc-nav-item" data-action="switchAccSection" data-arg1="stats"><span class="acc-nav-icon">📊</span> My Stats</div>
+      <div class="acc-nav-item" data-action="switchAccSection" data-arg1="settings"><span class="acc-nav-icon">⚙️</span> Settings</div>
+      <div class="acc-nav-item" data-action="switchAccSection" data-arg1="plan"><span class="acc-nav-icon">⭐</span> Plan &amp; Billing</div>
+      <div class="acc-nav-divider"></div>
+      <div class="acc-nav-item" data-action="switchAccSection" data-arg1="notifications"><span class="acc-nav-icon">🔔</span> Notifications</div>
+      <div class="acc-nav-item" data-action="switchAccSection" data-arg1="privacy"><span class="acc-nav-icon">🔒</span> Privacy</div>
+      <div class="acc-nav-divider"></div>
+      <div class="acc-logout"><span class="acc-nav-icon">🚪</span> Log out</div>
+    </div>
+    <div class="acc-main">
+
+      <!-- Profile -->
+      <div class="acc-section active" id="acc-profile">
+        <div class="acc-section-title">Profile</div>
+        <div class="acc-section-sub">Manage your personal information</div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Photo &amp; Display</div>
+          <div class="acc-avatar-row">
+            <div class="acc-avatar-edit" id="acc-avatar-edit">L</div>
+            <div class="acc-avatar-info"><strong id="acc-display-name">Learner</strong>Your username is shown to other learners.</div>
+          </div>
+        </div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Personal Info</div>
+          <div class="acc-field"><label class="acc-label">Username</label><input class="acc-input" id="acc-input-username" placeholder="yourname" autocomplete="off" value="Learner"></div>
+          <div class="acc-field" style="margin-bottom:0;"><label class="acc-label">Email</label><input class="acc-input" id="acc-input-email" type="email" readonly style="opacity:0.6;cursor:default;"></div>
+        </div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Security</div>
+          <div class="acc-field"><label class="acc-label">Current password</label><input class="acc-input" type="password" placeholder="••••••••"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="acc-field" style="margin-bottom:0;"><label class="acc-label">New password</label><input class="acc-input" type="password" placeholder="••••••••"></div>
+            <div class="acc-field" style="margin-bottom:0;"><label class="acc-label">Confirm password</label><input class="acc-input" type="password" placeholder="••••••••"></div>
+          </div>
+        </div>
+        <button class="btn-primary" id="acc-save-btn" data-action="saveProfile" style="margin-top:4px;">Save changes</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="acc-section" id="acc-stats">
+        <div class="acc-section-title">My Stats</div>
+        <div class="acc-section-sub">Your learning progress at a glance</div>
+        <div class="acc-stats-row">
+          <div class="acc-stat-card"><div class="acc-stat-val" style="color:var(--amber);">347</div><div class="acc-stat-label">Words learned</div></div>
+          <div class="acc-stat-card"><div class="acc-stat-val" id="acc-stat-streak" style="color:var(--terracotta);">🔥 —</div><div class="acc-stat-label">Day streak</div></div>
+          <div class="acc-stat-card"><div class="acc-stat-val" style="color:var(--sage);">84%</div><div class="acc-stat-label">Mastery rate</div></div>
+          <div class="acc-stat-card"><div class="acc-stat-val">4</div><div class="acc-stat-label">Active decks</div></div>
+        </div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Activity — last 12 weeks</div>
+          <div style="display:flex;align-items:flex-end;gap:5px;height:80px;margin-bottom:8px;">
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:40%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:65%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:30%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:80%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:55%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:90%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:45%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:70%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:50%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:85%"></div>
+            <div style="flex:1;background:rgba(232,168,50,0.25);border-radius:4px 4px 0 0;height:60%"></div>
+            <div style="flex:1;background:var(--amber);border-radius:4px 4px 0 0;height:95%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:#9E9289;"><span>9 wks ago</span><span>6 wks ago</span><span>3 wks ago</span><span>This week</span></div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="acc-section" id="acc-settings">
+        <div class="acc-section-title">Settings</div>
+        <div class="acc-section-sub">Customize how StepWise works for you</div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Study preferences</div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-info"><div class="acc-toggle-label">Daily reminders</div><div class="acc-toggle-desc">Get nudged when you haven't studied yet</div></div>
+            <button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-info"><div class="acc-toggle-label">Spaced repetition</div><div class="acc-toggle-desc">Show cards more often when you're struggling</div></div>
+            <button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-info"><div class="acc-toggle-label">Auto-advance cards</div><div class="acc-toggle-desc">Move to next card automatically after rating</div></div>
+            <button class="acc-toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-info"><div class="acc-toggle-label">Show root breakdowns</div><div class="acc-toggle-desc">Display word root hints on flashcards by default</div></div>
+            <button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button>
+          </div>
+        </div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Appearance</div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-info"><div class="acc-toggle-label">Dark mode</div><div class="acc-toggle-desc">Switch to a darker colour scheme</div></div>
+            <button class="acc-toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button>
+          </div>
+        </div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Language</div>
+          <div class="acc-field" style="margin-bottom:0;">
+            <label class="acc-label">App language</label>
+            <select class="acc-input" style="cursor:pointer;">
+              <option>English</option><option>Español</option><option>Français</option><option>Deutsch</option><option>日本語</option><option>中文</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan -->
+      <div class="acc-section" id="acc-plan">
+        <div class="acc-section-title">Plan &amp; Billing</div>
+        <div class="acc-section-sub">You're on the <strong>Free plan</strong> · upgrade anytime</div>
+        <div class="acc-plan-cards">
+          <div class="acc-plan-card current">
+            <span class="acc-plan-badge">Current plan</span>
+            <div class="acc-plan-name">Free</div>
+            <div class="acc-plan-price">$0 <span>/ month</span></div>
+            <div class="acc-plan-desc">Perfect for getting started with vocabulary learning.</div>
+            <div class="acc-plan-features">
+              <div class="acc-plan-feat">Up to 5 decks</div>
+              <div class="acc-plan-feat">Flashcards &amp; multiple choice</div>
+              <div class="acc-plan-feat">Memory game</div>
+              <div class="acc-plan-feat">Basic streak tracking</div>
+            </div>
+            <button class="acc-plan-btn">Current plan</button>
+          </div>
+          <div class="acc-plan-card popular">
+            <span class="acc-plan-badge">Most popular</span>
+            <div class="acc-plan-name">Pro</div>
+            <div class="acc-plan-price">$6 <span>/ month</span></div>
+            <div class="acc-plan-desc">For serious learners who want the full experience.</div>
+            <div class="acc-plan-features">
+              <div class="acc-plan-feat">Unlimited decks</div>
+              <div class="acc-plan-feat">All study modes</div>
+              <div class="acc-plan-feat">AI word extraction</div>
+              <div class="acc-plan-feat">Detailed progress analytics</div>
+              <div class="acc-plan-feat">Offline access</div>
+            </div>
+            <button class="acc-plan-btn">Upgrade to Pro</button>
+          </div>
+          <div class="acc-plan-card">
+            <div class="acc-plan-name">Teams</div>
+            <div class="acc-plan-price">$12 <span>/ user / mo</span></div>
+            <div class="acc-plan-desc">For classrooms and organisations learning together.</div>
+            <div class="acc-plan-features">
+              <div class="acc-plan-feat">Everything in Pro</div>
+              <div class="acc-plan-feat">Shared deck libraries</div>
+              <div class="acc-plan-feat">Admin dashboard</div>
+              <div class="acc-plan-feat">Class progress reports</div>
+              <div class="acc-plan-feat">Priority support</div>
+            </div>
+            <button class="acc-plan-btn">Get Teams</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="acc-section" id="acc-notifications">
+        <div class="acc-section-title">Notifications</div>
+        <div class="acc-section-sub">Choose what StepWise sends you</div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Email</div>
+          <div class="acc-toggle-row"><div class="acc-toggle-info"><div class="acc-toggle-label">Weekly progress digest</div><div class="acc-toggle-desc">A summary of your week every Sunday</div></div><button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+          <div class="acc-toggle-row"><div class="acc-toggle-info"><div class="acc-toggle-label">Streak at risk</div><div class="acc-toggle-desc">Alert when you haven't studied by evening</div></div><button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+          <div class="acc-toggle-row"><div class="acc-toggle-info"><div class="acc-toggle-label">New decks in Explore</div><div class="acc-toggle-desc">When new staff picks are published</div></div><button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+          <div class="acc-toggle-row"><div class="acc-toggle-info"><div class="acc-toggle-label">Product updates</div><div class="acc-toggle-desc">New features and improvements</div></div><button class="acc-toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+        </div>
+      </div>
+
+      <!-- Privacy -->
+      <div class="acc-section" id="acc-privacy">
+        <div class="acc-section-title">Privacy</div>
+        <div class="acc-section-sub">Control your data and visibility</div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Visibility</div>
+          <div class="acc-toggle-row"><div class="acc-toggle-info"><div class="acc-toggle-label">Public profile</div><div class="acc-toggle-desc">Others can find and view your profile</div></div><button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+          <div class="acc-toggle-row"><div class="acc-toggle-info"><div class="acc-toggle-label">Show activity</div><div class="acc-toggle-desc">Display your study activity to others</div></div><button class="acc-toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+          <div class="acc-toggle-row"><div class="acc-toggle-info"><div class="acc-toggle-label">Share deck stats</div><div class="acc-toggle-desc">Let others see how many people use your decks</div></div><button class="acc-toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></button></div>
+        </div>
+        <div class="acc-form-card">
+          <div class="acc-form-title">Data</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <button class="btn-secondary-outline" style="width:fit-content;">⬇️ Export my data</button>
+            <button style="width:fit-content;padding:10px 20px;border-radius:12px;border:1.5px solid var(--terracotta);background:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--terracotta);cursor:pointer;">🗑️ Delete account</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /#account-view -->
+
+
+<!-- ════════════════════════════════════════
+     OVERLAY VIEWS (fixed full-screen)
+════════════════════════════════════════ -->
+
+<!-- ── STUDY / FLASHCARD MODE ── -->
+<div id="study-view" class="overlay">
+  <div class="study-topbar">
+    <div class="study-topbar-left">
+      <button class="study-back-btn" data-action="exitStudy">← Exit</button>
+      <span class="study-deck-name">📚 SAT / GRE Prep</span>
+    </div>
+    <div class="study-topbar-center">
+      <span class="fc-count" id="fc-count">1 / 6</span>
+      <div class="study-prog-bg"><div class="study-prog-fill" id="fc-prog-fill" style="width:16.6%"></div></div>
+    </div>
+   
+  </div>
+
+  <div class="study-main">
+    <div id="fc-wrap" data-action="flipCard">
+      <div id="fc-inner">
+        <!-- Front -->
+        <div class="fc-face fc-front">
+          
+          <div id="fc-type-label" style="display:none;position:absolute;top:20px;left:20px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:20px;background:var(--lavender);color:white;"></div>
+          <div class="fc-front-emoji" id="fc-front-emoji">🌙 📅</div>
+          <div class="fc-front-word" id="fc-front-word">Mundane</div>
+          <div class="fc-front-phonetic" id="fc-front-phonetic">/mʌnˈdeɪn/</div>
+          <div class="fc-front-divider" id="fc-front-divider"></div>
+          <div class="fc-parts" id="fc-front-parts"></div>
+        </div>
+        <!-- Back -->
+        <div class="fc-face fc-back">
+          <div class="fc-back-orb1"></div>
+          <div class="fc-back-orb2"></div>
+          <div class="fc-back-emoji" id="fc-back-emoji">🌙 📅</div>
+          <div class="fc-back-word" id="fc-back-word">Mundane</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;position:relative;z-index:1;">Definition</div>
+          <!-- Standard back content -->
+          <div id="fc-back-standard" style="position:relative;z-index:1;text-align:center;">
+            <div class="fc-back-def" id="fc-back-def">Lacking interest or excitement; dull and ordinary.</div>
+            <div class="fc-back-example" id="fc-back-example" style="margin-top:12px;font-size:13px;font-style:italic;opacity:0.6;">"his mundane, humdrum existence"</div>
+          </div>
+          <!-- Mnemonic back content -->
+          <div id="fc-back-mnemonic" style="display:none;flex-direction:column;gap:10px;width:100%;max-width:320px;position:relative;z-index:1;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fc-hint" style="font-size:12px;color:#9E9289;letter-spacing:0.5px;">Tap card to reveal definition</div>
+
+    <div id="fc-action-row" style="opacity:0;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="display:flex;gap:12px;">
+        <button class="fc-action-btn fc-forgot" data-action="nextCardForgot">✕ Still learning</button>
+        <button class="fc-action-btn fc-knew" data-action="nextCardKnew">✓ Got it</button>
+      </div>
+    </div>
+
+    <div id="fc-dots" style="display:flex;gap:6px;"></div>
+
+    <div id="study-congrats" style="display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px;padding:40px 24px;">
+      <div style="font-size:64px;line-height:1;">🎉</div>
+      <div style="font-family:'Fraunces',serif;font-size:34px;font-weight:900;color:var(--ink);line-height:1.1;">All done!</div>
+      <div id="sc-sub" style="color:#9E9289;font-size:15px;"></div>
+      <div id="sc-stats" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;"></div>
+      <div style="display:flex;gap:12px;margin-top:8px;">
+        <button class="fc-action-btn fc-knew" data-action="restartStudy">↺ Study Again</button>
+        <button class="fc-action-btn fc-forgot" data-action="exitStudy">← Back to Deck</button>
+      </div>
+    </div>
+  </div>
+</div><!-- /#study-view -->
+
+<!-- ── MEMORY GAME ── -->
+<div id="memory-view" class="overlay">
+  <div class="memory-topbar">
+    <div class="memory-topbar-left">
+      <button class="mc-back" data-action="exitMemory">← Exit</button>
+      <span class="mc-deck-name">🎴 Memory Match · SAT / GRE Prep</span>
+    </div>
+    <div class="memory-topbar-center">
+      <div class="mem-stat"><div class="mem-stat-val" id="mem-matches">0</div><div class="mem-stat-label">Matched</div></div>
+      <div class="mc-divider"></div>
+      <div class="mem-stat"><div class="mem-stat-val" id="mem-attempts">0</div><div class="mem-stat-label">Attempts</div></div>
+      <div class="mc-divider"></div>
+      <div class="mem-stat"><div class="mem-stat-val" id="mem-timer">0:00</div><div class="mem-stat-label">Time</div></div>
+    </div>
+    <div class="memory-topbar-right">
+      <button class="study-icon-btn" data-action="initMemory" title="Restart">↺</button>
+    </div>
+  </div>
+  <div class="memory-main">
+    <div class="memory-instruction">Click a <strong>term</strong>, then its <strong>meaning</strong> to make a match · all cards are visible</div>
+    <div class="memory-columns" id="memory-grid"></div>
+  </div>
+
+  <!-- ── WIN MODAL ── -->
+  <div id="memory-win-modal" class="mem-win-backdrop">
+    <div class="mem-win-card">
+      <div class="mem-win-emoji">🎉</div>
+      <div class="mem-win-title">You matched them all!</div>
+      <div class="mem-win-sub" id="mw-sub"></div>
+      <div class="mem-win-stats">
+        <div class="mem-win-stat">
+          <div class="mem-win-stat-val" id="mw-matched">—</div>
+          <div class="mem-win-stat-label">Matched</div>
+        </div>
+        <div class="mem-win-stat">
+          <div class="mem-win-stat-val" id="mw-attempts">—</div>
+          <div class="mem-win-stat-label">Attempts</div>
+        </div>
+        <div class="mem-win-stat">
+          <div class="mem-win-stat-val" id="mw-time">—</div>
+          <div class="mem-win-stat-label">Time</div>
+        </div>
+        <div class="mem-win-stat">
+          <div class="mem-win-stat-val" id="mw-acc">—</div>
+          <div class="mem-win-stat-label">Accuracy</div>
+        </div>
+      </div>
+      <div class="mem-win-actions">
+        <button class="btn-primary" data-action="exitMemory">← Back to Deck</button>
+        <button class="btn-secondary-outline" data-action="initMemory">Play Again 🔄</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#memory-view -->
+
+<!-- ── MULTIPLE CHOICE ── -->
+<div id="mc-view" class="overlay">
+  <div class="mc-topbar">
+    <div class="mc-topbar-left">
+      <button class="mc-back" data-action="exitMC">← Exit</button>
+      <span class="mc-deck-name">🧩 Multiple Choice · SAT / GRE Prep</span>
+    </div>
+    <div class="mc-topbar-center">
+      <div class="mc-stat"><div class="mc-stat-val" id="mc-correct">0</div><div class="mc-stat-label">Correct</div></div>
+      <div class="mc-divider"></div>
+      <div class="mc-stat"><div class="mc-stat-val" id="mc-qnum">1/6</div><div class="mc-stat-label">Question</div></div>
+      <div class="mc-divider"></div>
+      <div class="mc-stat"><div class="mc-stat-val" id="mc-timer">0:00</div><div class="mc-stat-label">Time</div></div>
+    </div>
+    <div>
+      <button class="study-icon-btn" data-action="initMC" title="Restart">↺</button>
+    </div>
+  </div>
+  <div class="mc-progress-bar"><div class="mc-progress-fill" id="mc-prog-fill" style="width:0%"></div></div>
+
+  <div class="mc-main">
+    <div class="mc-card-wrap">
+      <div id="mc-q-num-label" class="mc-q-num">Question 1 of 6</div>
+      <div class="mc-question-card" style="min-height:170px;">
+        <div class="mc-q-label">What does this word mean?</div>
+        <div class="mc-q-word" id="mc-q-word">Ephemeral</div>
+        <div style="margin-top:14px;height:28px;display:flex;align-items:center;justify-content:center;">
+          <div id="mc-q-parts" class="mc-q-parts" style="visibility:hidden;opacity:0;transition:opacity 0.2s;position:absolute;"></div>
+          <button id="mc-hint-btn" data-action="revealMCHint"
+            style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;cursor:pointer;transition:all 0.15s;letter-spacing:0.3px;">💡 Reveal hint</button>
+        </div>
+      </div>
+      <div class="mc-options" id="mc-options"></div>
+      <div class="mc-feedback" id="mc-feedback"></div>
+      <button class="mc-next-btn" id="mc-next-btn" data-action="nextMCQuestion">Next Question →</button>
+      <div class="mc-result" id="mc-result">
+        <div class="mcr-emoji" id="mcr-emoji">🎉</div>
+        <div class="mcr-title" id="mcr-title">Well done!</div>
+        <div class="mcr-sub" id="mcr-sub"></div>
+        <div class="mcr-stats">
+          <div class="mcr-stat"><div class="mcr-stat-val" id="mcr-correct-val">—</div><div class="mcr-stat-label">Correct</div></div>
+          <div class="mcr-stat"><div class="mcr-stat-val" id="mcr-pct-val">—</div><div class="mcr-stat-label">Accuracy</div></div>
+          <div class="mcr-stat"><div class="mcr-stat-val" id="mcr-time-val">—</div><div class="mcr-stat-label">Time</div></div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-primary" data-action="initMC">Try Again</button>
+          <button class="btn-secondary-outline" data-action="exitMC">Back to Deck</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /#mc-view -->
+
+<!-- ── PRACTICE CHOOSER ── -->
+
+
+<!-- ════════════════════════════════════════
+     TOAST
+════════════════════════════════════════ -->
+<!-- Import Modal -->
+<div id="import-modal" class="imp-backdrop" aria-hidden="true">
+  <div class="imp-dialog" role="dialog">
+    <div class="imp-header">
+      <div>
+        <div class="imp-title">Import cards</div>
+        <div class="imp-subtitle">Add to your deck</div>
+      </div>
+      <button class="imp-close" data-action="closeImportModal">✕</button>
+    </div>
+    <div class="imp-tabs">
+      <button class="imp-tab active" data-action="switchImportTab" data-arg1="paste">Paste text</button>
+      <button class="imp-tab" data-action="switchImportTab" data-arg1="upload">Upload file</button>
+      <button class="imp-tab" data-action="switchImportTab" data-arg1="ai">Generate with AI</button>
+    </div>
+    <div class="imp-body">
+      <div class="imp-panel" id="imp-panel-paste">
+        <div class="imp-hint">One card per line. Choose a separator below.</div>
+        <textarea class="imp-textarea" id="imp-paste-area" placeholder="Ubiquitous - present everywhere&#10;Ephemeral - lasting a short time" rows="6" autocomplete="off" spellcheck="false"></textarea>
+        <div class="imp-count" id="imp-count">Paste your word list above</div>
+        <div style="margin-top:14px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#9E9289;margin-bottom:8px;">Term separator</div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <button class="sep-btn selected" data-action="selectSep" data-arg1="-"><code>word - definition</code></button>
+            <button class="sep-btn" data-action="selectSep" data-arg1=";"><code>word ; definition</code></button>
+            <button class="sep-btn" data-action="selectSep" data-arg1=":"><code>word : definition</code></button>
+            <button class="sep-btn" data-action="selectSep" data-arg1="custom">✏️ Custom…</button>
+          </div>
+          <div id="imp-custom-sep-form" class="custom-sep-form" style="display:none;">
+            <div class="custom-sep-row">
+              <input class="cer-input custom-sep-field" placeholder="word" disabled>
+              <div class="custom-sep-mid">
+                <input class="custom-sep-char" id="imp-custom-sep-char" placeholder="÷" maxlength="8" autocomplete="off" spellcheck="false">
+              </div>
+              <input class="cer-input custom-sep-field" placeholder="definition" disabled>
+            </div>
+            <div class="custom-sep-hint">Type your separator character in the middle field</div>
+          </div>
+        </div>
+      </div>
+      <div class="imp-panel" id="imp-panel-upload" style="display:none">
+        <div class="imp-dropzone" id="imp-dropzone">
+          <div class="imp-drop-icon">↑</div>
+          <div class="imp-drop-title">Drop a file here</div>
+          <div class="imp-drop-sub">Supports .csv, .txt, .tsv, Anki .apkg</div>
+          <label class="imp-browse">Browse files <input type="file" style="display:none"></label>
+        </div>
+      </div>
+      <div class="imp-panel" id="imp-panel-ai" style="display:none">
+        <div class="imp-hint">One word per line — AI will generate mnemonic flashcards.</div>
+        <textarea id="imp-ai-textarea" class="imp-textarea" placeholder="Ephemeral&#10;Melancholy&#10;Arduous&#10;Vivid" rows="6" autocomplete="off" spellcheck="false"></textarea>
+        <div class="imp-ai-note">Powered by ChatGPT</div>
+      </div>
+    </div>
+    <div class="imp-footer">
+      <button class="imp-btn-cancel" data-action="closeImportModal">Cancel</button>
+      <button class="imp-btn-import" data-action="importCards">Import cards</button>
+    </div>
+  </div>
+</div>
+
+<!-- New Folder Modal -->
+<div id="new-folder-modal" class="nfm-backdrop" aria-hidden="true">
+  <div class="nfm-dialog" role="dialog" aria-labelledby="nfm-title">
+    <div class="nfm-icon">📁</div>
+    <div class="nfm-title" id="nfm-title">New Folder</div>
+    <input id="new-folder-name" class="nfm-input" placeholder="Folder name…" maxlength="30" autocomplete="off" spellcheck="false">
+    <div class="nfm-actions">
+      <button class="nfm-btn-create" data-action="addFolder">Create</button>
+      <button class="nfm-btn-cancel" data-action="cancelFolder">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add deck to folder modal -->
+<div id="add-deck-modal" class="adm-backdrop" aria-hidden="true">
+  <div class="adm-dialog">
+    <div class="adm-header">
+      <div class="adm-title">Add to <em id="adm-folder-name"></em></div>
+      <button class="imp-close" data-action="closeAddDeckPicker">✕</button>
+    </div>
+    <div id="adm-deck-list" class="adm-list"></div>
+    <div style="padding:0 24px 20px;">
+      <button class="imp-btn-cancel" style="width:100%;" data-action="closeAddDeckPicker">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete confirmation modal -->
+<div id="delete-confirm-modal" class="nfm-backdrop" aria-hidden="true">
+  <div class="nfm-dialog" role="alertdialog" aria-labelledby="delete-confirm-title" aria-describedby="delete-confirm-text">
+    <div class="nfm-icon">❗</div>
+    <div class="nfm-title" id="delete-confirm-title">Delete item?</div>
+    <div id="delete-confirm-text" style="text-align:center;color:#4F433A;font-size:15px;line-height:1.6;margin-bottom:24px;">Are you sure you want to delete this item?</div>
+    <div class="nfm-actions">
+      <button class="nfm-btn-create" data-action="confirmDelete">Delete</button>
+      <button class="nfm-btn-cancel" data-action="cancelDelete">Cancel</button>
+    </div>
+    <label class="nfm-skip-label">
+      <input type="checkbox" id="delete-skip-confirm"> Don't ask me again
+    </label>
+  </div>
+</div>
+
+
+<div id="stepwise-toast"></div>
+
+<div id="ctx-menu">
+  <button class="ctx-item ctx-danger" id="ctx-delete-btn">🗑 Delete</button>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
