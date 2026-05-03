@@ -92,7 +92,15 @@ router.post('/generate', async (req, res) => {
     const generated = completion.choices[0].message.content.trim();
     console.log('ChatGPT raw response:\n', generated);
 
-    const cards = parseMnemonicResponse(generated);
+    // Only return cards for the exact words the user submitted
+    const inputWords = new Set(
+      text.trim().split('\n').map(w => w.trim().toLowerCase()).filter(Boolean)
+    );
+    const allCards = parseMnemonicResponse(generated);
+    const cards = inputWords.size > 0
+      ? allCards.filter(c => inputWords.has(c.term.toLowerCase()))
+      : allCards;
+
     if (!cards.length) throw new Error('Could not parse any cards. Raw: ' + generated.slice(0, 200));
 
     res.json({ cards });
