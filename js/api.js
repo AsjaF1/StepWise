@@ -4,9 +4,7 @@
    Exposes window.Api for use in app.js
 ════════════════════════════════════════════════════ */
 
-// API_BASE is empty so all calls are relative to whatever
-// origin is serving the page (Express handles both frontend + API)
-const API_BASE = '';
+const API_BASE = 'https://stepwise-41ue.onrender.com';
 
 async function _req(method, path, body) {
   const opts = {
