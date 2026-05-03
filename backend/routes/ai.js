@@ -1,5 +1,5 @@
-const router   = require('express').Router();
-const Anthropic = require('@anthropic-ai/sdk');
+const router = require('express').Router();
+const OpenAI = require('openai');
 
 const MNEMONIC_PROMPT = `Create VERY SHORT mnemonic flashcards.
 
@@ -52,7 +52,7 @@ function parseMnemonicResponse(text) {
                      : seg.indexOf('->') !== -1 ? seg.indexOf('->')
                      : -1;
       if (arrowIdx !== -1) {
-        const chunk       = seg.slice(0, arrowIdx).trim();
+        const chunk        = seg.slice(0, arrowIdx).trim();
         const soundMeaning = seg.slice(arrowIdx + 1).trim().replace(/^>\s*/, '');
         if (chunk) parts.push({ chunk, meaning: soundMeaning });
       }
@@ -75,26 +75,29 @@ router.post('/generate', async (req, res) => {
     if (!text || !text.trim()) return res.status(400).json({ error: 'Text is required' });
     if (text.length > 4000)    return res.status(400).json({ error: 'Text too long (max 4000 chars)' });
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
-    if (!apiKey) return res.status(500).json({ error: 'ANTHROPIC_API_KEY not configured' });
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) return res.status(500).json({ error: 'OPENAI_API_KEY not configured' });
 
-    const client  = new Anthropic({ apiKey });
-    const message = await client.messages.create({
-      model:      'claude-haiku-4-5-20251001',
-      max_tokens: 1024,
-      system:     MNEMONIC_PROMPT,
-      messages:   [{ role: 'user', content: text.trim() }],
+    const openai = new OpenAI({ apiKey });
+    const completion = await openai.chat.completions.create({
+      model:       'gpt-4o-mini',
+      messages:    [
+        { role: 'system', content: MNEMONIC_PROMPT },
+        { role: 'user',   content: text.trim() },
+      ],
+      temperature: 0.7,
+      max_tokens:  1024,
     });
 
-    const generated = message.content[0].text.trim();
-    console.log('Claude raw response:\n', generated);
+    const generated = completion.choices[0].message.content.trim();
+    console.log('ChatGPT raw response:\n', generated);
 
     const cards = parseMnemonicResponse(generated);
     if (!cards.length) throw new Error('Could not parse any cards. Raw: ' + generated.slice(0, 200));
 
     res.json({ cards });
   } catch (err) {
-    console.error('AI error:', err.message);
+    console.error('OpenAI error:', err.message);
     res.status(500).json({ error: err.message });
   }
 });
