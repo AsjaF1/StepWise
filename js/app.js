@@ -428,11 +428,56 @@ function showCreateCards() {
 }
 
 
+function _renderExploreGrid() {
+  const grid = document.getElementById('ex-sets-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  EXPLORE_DECKS.forEach((deck, i) => {
+    const cfg  = DECK_CONFIGS[deck.theme] || DECK_CONFIGS.amber;
+    const card = document.createElement('div');
+    card.className      = 'md-set-card';
+    card.dataset.action = 'showExploreDeck';
+    card.dataset.arg1   = deck._id;
+    card.dataset.name   = deck.name;
+    card.dataset.order  = i;
+    card.innerHTML = `
+      <div class="md-set-banner" style="background:${cfg.bg}">
+        <div class="md-set-emoji">${deck.emoji || '📖'}</div>
+      </div>
+      <div class="md-set-body">
+        <div class="md-set-name">${_escHtml(deck.name)}</div>
+        <div class="md-set-meta">${deck.cards.length} cards</div>
+        <div class="md-set-tags">
+          <span class="md-set-tag" style="background:#EAF3EB;color:#2E5430;">✦ Official</span>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+let _exploreSortDir = null;
+function sortExploreSets(dir) {
+  _exploreSortDir = (_exploreSortDir === dir) ? null : dir;
+  document.querySelectorAll('[data-action="sortExploreSets"]').forEach(b => {
+    b.classList.toggle('active', b.dataset.arg1 === _exploreSortDir);
+  });
+  const grid  = document.getElementById('ex-sets-grid');
+  const cards = [...grid.querySelectorAll('.md-set-card')];
+  if (_exploreSortDir) {
+    cards.sort((a, b) => { const cmp = a.dataset.name.localeCompare(b.dataset.name, undefined, {sensitivity:'base'}); return _exploreSortDir === 'asc' ? cmp : -cmp; });
+  } else {
+    cards.sort((a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order));
+  }
+  cards.forEach(c => grid.appendChild(c));
+}
+
 function showExplore() {
   hideAll();
   _setLayout('full');
   _showView('explore-view');
   _setNavActive('explore');
+  _renderExploreGrid();
 }
 
 function showExploreDeck(deckId) {
@@ -2541,6 +2586,7 @@ async function init() {
       showNewFolderInput, cancelFolder, addFolder,
       addInlineCard,
       sortSets: () => sortSets(arg1),
+      sortExploreSets: () => sortExploreSets(arg1),
       openCustomEmoji: () => openCustomEmoji(btn),
       showEmojiCat:   () => showEmojiCat(btn, arg1),
       switchAccSection: () => switchAccSection(arg1, btn),

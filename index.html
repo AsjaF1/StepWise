@@ -819,37 +819,18 @@
 
 <!-- ── EXPLORE VIEW ── -->
 <div id="explore-view" class="full-view">
-  <div class="ex-shell" style="max-width:900px;margin:0 auto;padding:48px 32px;">
-    <div class="ex-header">
-      <div class="ex-title">Explore <em>decks</em></div>
-      <div class="ex-sub">Official StepWise decks — study-ready with mnemonics</div>
+  <div class="md-main">
+    <div class="md-header">
+      <div class="md-title">Explore <em>decks</em></div>
     </div>
-    <div class="ex-grid" style="margin-top:32px;">
-      <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-en">
-        <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">☀️</div>
-        <div class="ex-card-body">
-          <div class="ex-card-name">English (B1/B2)</div>
-          <div class="ex-card-meta">8 words · by StepWise</div>
-          <div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Vocabulary</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">✦ Official</span></div>
-        </div>
-      </div>
-      <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-med">
-        <div class="ex-card-banner" style="background:linear-gradient(135deg,#9FC3F0,#578DDC)">🧠</div>
-        <div class="ex-card-body">
-          <div class="ex-card-name">Medicine</div>
-          <div class="ex-card-meta">8 words · by StepWise</div>
-          <div class="ex-card-tags"><span class="ex-card-tag" style="background:#EAF0FB;color:#1A3A6A;">Medicine</span><span class="ex-card-tag" style="background:#EAF0FB;color:#1A3A6A;">✦ Official</span></div>
-        </div>
-      </div>
-      <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-art">
-        <div class="ex-card-banner" style="background:linear-gradient(135deg,#F4C2D4,#E8889E)">🎨</div>
-        <div class="ex-card-body">
-          <div class="ex-card-name">Art</div>
-          <div class="ex-card-meta">8 words · by StepWise</div>
-          <div class="ex-card-tags"><span class="ex-card-tag" style="background:#FCF0F4;color:#6A1A30;">Arts</span><span class="ex-card-tag" style="background:#FCF0F4;color:#6A1A30;">✦ Official</span></div>
-        </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:#9E9289;">Official Decks</div>
+      <div style="display:flex;gap:4px;">
+        <button class="sort-btn" data-action="sortExploreSets" data-arg1="asc" title="Sort A → Z">↑</button>
+        <button class="sort-btn" data-action="sortExploreSets" data-arg1="desc" title="Sort Z → A">↓</button>
       </div>
     </div>
+    <div class="md-grid" id="ex-sets-grid"></div>
   </div>
 </div><!-- /#explore-view -->
 
