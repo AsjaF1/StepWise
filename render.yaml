@@ -3,7 +3,7 @@ services:
     name: stepwise-backend
     runtime: node
     rootDir: backend
-    buildCommand: npm install && mkdir -p public && cp -r ../index.html ../css ../js public/
+    buildCommand: npm install
     startCommand: node server.js
     envVars:
       - key: NODE_ENV
