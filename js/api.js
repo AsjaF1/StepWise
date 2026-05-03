@@ -4,7 +4,7 @@
    Exposes window.Api for use in app.js
 ════════════════════════════════════════════════════ */
 
-const API_BASE = 'https://stepwise-41ue.onrender.com';
+const API_BASE = '';
 
 async function _req(method, path, body) {
   const opts = {
