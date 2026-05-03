@@ -22,8 +22,8 @@ app.use('/api/progress', auth, require('./routes/progress'));
 app.use('/api/sessions', auth, require('./routes/sessions'));
 app.use('/api/ai',       auth, require('./routes/ai'));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
+app.get('', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
