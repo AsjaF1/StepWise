@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git show *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(curl *)",
+      "PowerShell(Invoke-WebRequest -Uri \"https://stepwise-41ue.onrender.com/api/decks\" -TimeoutSec 30 | Select-Object StatusCode, Content)",
+      "WebFetch(domain:stepwise-41ue.onrender.com)"
+    ]
+  }
+}
