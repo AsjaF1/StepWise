@@ -28,13 +28,23 @@ MUN → moon, DAY → day
 Now do:
 `;
 
+// Strip numbering, markdown bold/italic, and surrounding punctuation from a term
+function cleanTerm(t) {
+  return t
+    .replace(/^\s*\d+[\.\)]\s*/, '')   // "1. " or "1) "
+    .replace(/\*\*/g, '')              // **bold**
+    .replace(/\*/g, '')               // *italic*
+    .replace(/^["'`]+|["'`]+$/g, '')  // surrounding quotes
+    .trim();
+}
+
 function parseMnemonicResponse(text) {
   const blocks = text.trim().split(/\n[ \t]*\n+/).filter(b => b.trim());
   return blocks.map(block => {
     const lines = block.trim().split('\n').map(l => l.trim()).filter(l => l);
     if (lines.length < 2) return null;
 
-    const term = lines[0];
+    const term = cleanTerm(lines[0]);
 
     let meaning = '';
     let offset  = 1;
@@ -94,11 +104,11 @@ router.post('/generate', async (req, res) => {
 
     // Only return cards for the exact words the user submitted
     const inputWords = new Set(
-      text.trim().split('\n').map(w => w.trim().toLowerCase()).filter(Boolean)
+      text.trim().split('\n').map(w => cleanTerm(w).toLowerCase()).filter(Boolean)
     );
     const allCards = parseMnemonicResponse(generated);
     const cards = inputWords.size > 0
-      ? allCards.filter(c => inputWords.has(c.term.toLowerCase()))
+      ? allCards.filter(c => inputWords.has(cleanTerm(c.term).toLowerCase()))
       : allCards;
 
     if (!cards.length) throw new Error('Could not parse any cards. Raw: ' + generated.slice(0, 200));
