@@ -23,32 +23,32 @@ const EXPLORE_DECKS = [
     _id: 'explore-en',
     name: 'English (B1/B2)',
     theme: 'amber',
-    emoji: '🎓',
+    emoji: '☀️',
     cards: [
-      { _id: 'en-1', term: 'Mundane',       definition: 'Lacking interest or excitement' },
-      { _id: 'en-2', term: 'Vicarious',     definition: 'Experienced through someone else' },
-      { _id: 'en-3', term: 'Ephemeral',     definition: 'Lasting a very short time' },
-      { _id: 'en-4', term: 'Sycophant',     definition: 'Insincere flatterer' },
-      { _id: 'en-5', term: 'Quintessential',definition: 'Perfect example of something' },
-      { _id: 'en-6', term: 'Lethargy',      definition: 'Lack of energy or motivation' },
-      { _id: 'en-7', term: 'Cacophony',     definition: 'Harsh mixture of sounds' },
-      { _id: 'en-8', term: 'Serendipity',   definition: 'Lucky accidental discovery' },
+      { _id: 'en-1', term: 'Mundane',        definition: 'Lacking interest or excitement',    type: 'mnemonic', parts: [{chunk:'MUN',meaning:'moon'},{chunk:'DAY',meaning:'day'}],                           example: 'same boring moon-day routine',          emojis: ['🌙','😐'] },
+      { _id: 'en-2', term: 'Vicarious',      definition: 'Experienced through someone else',  type: 'mnemonic', parts: [{chunk:'VIC',meaning:'vicar'},{chunk:'AR',meaning:'are'}],                           example: 'living life through another person',    emojis: ['👤','✨'] },
+      { _id: 'en-3', term: 'Ephemeral',      definition: 'Lasting a very short time',         type: 'mnemonic', parts: [{chunk:'EPH',meaning:'effect'},{chunk:'EMERAL',meaning:'emerald (shines briefly)'}], example: 'beautiful but gone in a moment',        emojis: ['💨','⏳'] },
+      { _id: 'en-4', term: 'Sycophant',      definition: 'Insincere flatterer',               type: 'mnemonic', parts: [{chunk:'SYCO',meaning:'psycho'},{chunk:'PHANT',meaning:'fan'}],                      example: 'fake praise for attention',             emojis: ['🙄','🎭'] },
+      { _id: 'en-5', term: 'Quintessential', definition: 'Perfect example of something',      type: 'mnemonic', parts: [{chunk:'QUINT',meaning:'five'},{chunk:'ESSENT',meaning:'essence'}],                  example: 'five-star perfect example',             emojis: ['⭐','🌟'] },
+      { _id: 'en-6', term: 'Lethargy',       definition: 'Lack of energy or motivation',      type: 'mnemonic', parts: [{chunk:'LETH',meaning:'let'},{chunk:'ARGY',meaning:'energy'}],                       example: 'no energy, just "let it be"',           emojis: ['😴','⚡'] },
+      { _id: 'en-7', term: 'Cacophony',      definition: 'Harsh mixture of sounds',           type: 'mnemonic', parts: [{chunk:'CACO',meaning:'chaotic'},{chunk:'PHONY',meaning:'phone/noise'}],             example: 'chaotic noise everywhere',             emojis: ['🔊','😖'] },
+      { _id: 'en-8', term: 'Serendipity',    definition: 'Lucky accidental discovery',        type: 'mnemonic', parts: [{chunk:'SER',meaning:'serene'},{chunk:'DIPITY',meaning:'dip (fall into luck)'}],     example: 'happy surprise falling into luck',     emojis: ['🍀','🎉'] },
     ],
   },
   {
     _id: 'explore-med',
     name: 'Medicine',
     theme: 'rust',
-    emoji: '🏥',
+    emoji: '🧠',
     cards: [
-      { _id: 'med-1', term: 'Diagnosis',      definition: 'Identification of a disease' },
-      { _id: 'med-2', term: 'Symptom',        definition: 'Sign of a medical condition' },
-      { _id: 'med-3', term: 'Inflammation',   definition: "Body's response to injury or infection" },
-      { _id: 'med-4', term: 'Antibiotic',     definition: 'Medicine that kills bacteria' },
-      { _id: 'med-5', term: 'Immunity',       definition: "Body's ability to resist disease" },
-      { _id: 'med-6', term: 'Pathogen',       definition: 'Microorganism that causes disease' },
-      { _id: 'med-7', term: 'Prescription',   definition: 'Written order for medicine' },
-      { _id: 'med-8', term: 'Rehabilitation', definition: 'Recovery process after illness or injury' },
+      { _id: 'med-1', term: 'Diagnosis',      definition: 'Identification of a disease',              type: 'mnemonic', parts: [{chunk:'DIA',meaning:'diagram'},{chunk:'GNOSIS',meaning:'knowing'}],              example: "figuring out what's wrong",        emojis: ['🩺','📋'] },
+      { _id: 'med-2', term: 'Symptom',        definition: 'Sign of a medical condition',              type: 'mnemonic', parts: [{chunk:'SYM',meaning:'sign'},{chunk:'PTOM',meaning:'problem'}],                    example: "body's warning signal",             emojis: ['🚨','🤒'] },
+      { _id: 'med-3', term: 'Inflammation',   definition: "Body's response to injury or infection",   type: 'mnemonic', parts: [{chunk:'INFLAM',meaning:'flame inside'}],                                          example: 'body "on fire" response',           emojis: ['🔥','🩹'] },
+      { _id: 'med-4', term: 'Antibiotic',     definition: 'Medicine that kills bacteria',             type: 'mnemonic', parts: [{chunk:'ANTI',meaning:'against'},{chunk:'BIO',meaning:'life'}],                    example: 'kills bad life inside',             emojis: ['🦠','💊'] },
+      { _id: 'med-5', term: 'Immunity',       definition: "Body's ability to resist disease",         type: 'mnemonic', parts: [{chunk:'IM',meaning:'not'},{chunk:'MUNITY',meaning:'disease protection'}],         example: "body's shield system",             emojis: ['🛡️','🧬'] },
+      { _id: 'med-6', term: 'Pathogen',       definition: 'Microorganism that causes disease',        type: 'mnemonic', parts: [{chunk:'PATHO',meaning:'path'},{chunk:'GEN',meaning:'generator'}],                 example: 'path of disease starter',           emojis: ['🦠','⚠️'] },
+      { _id: 'med-7', term: 'Prescription',   definition: 'Written order for medicine',               type: 'mnemonic', parts: [{chunk:'PRE',meaning:'before'},{chunk:'SCRIPT',meaning:'written'}],               example: "doctor's written instruction",      emojis: ['📄','💊'] },
+      { _id: 'med-8', term: 'Rehabilitation', definition: 'Recovery process after illness or injury', type: 'mnemonic', parts: [{chunk:'RE',meaning:'again'},{chunk:'HAB',meaning:'habit'}],                       example: 'getting body back again',           emojis: ['🏥','💪'] },
     ],
   },
   {
@@ -57,14 +57,14 @@ const EXPLORE_DECKS = [
     theme: 'honey',
     emoji: '🎨',
     cards: [
-      { _id: 'art-1', term: 'Composition', definition: 'Arrangement of visual elements' },
-      { _id: 'art-2', term: 'Contrast',    definition: 'Difference between light, color, or tone' },
-      { _id: 'art-3', term: 'Perspective', definition: 'Technique for creating depth' },
-      { _id: 'art-4', term: 'Proportion',  definition: 'Size relationship between parts' },
-      { _id: 'art-5', term: 'Texture',     definition: 'Surface quality of an artwork' },
-      { _id: 'art-6', term: 'Hue',         definition: 'Pure color in the spectrum' },
-      { _id: 'art-7', term: 'Saturation',  definition: 'Intensity of a color' },
-      { _id: 'art-8', term: 'Balance',     definition: 'Visual stability in a composition' },
+      { _id: 'art-1', term: 'Composition', definition: 'Arrangement of visual elements',        type: 'mnemonic', parts: [{chunk:'COM',meaning:'together'},{chunk:'POSITION',meaning:'placement'}],          example: 'how everything is placed',      emojis: ['🎨','🖼️'] },
+      { _id: 'art-2', term: 'Contrast',    definition: 'Difference between light, color, or tone', type: 'mnemonic', parts: [{chunk:'CONTRA',meaning:'against'},{chunk:'AST',meaning:'sharp difference'}],  example: 'light vs dark effect',          emojis: ['⚫','⚪'] },
+      { _id: 'art-3', term: 'Perspective', definition: 'Technique for creating depth',          type: 'mnemonic', parts: [{chunk:'PER',meaning:'through'},{chunk:'SPECTIVE',meaning:'seeing'}],              example: 'seeing depth in art',           emojis: ['👁️','📐'] },
+      { _id: 'art-4', term: 'Proportion',  definition: 'Size relationship between parts',       type: 'mnemonic', parts: [{chunk:'PRO',meaning:'for'},{chunk:'PORTION',meaning:'part'}],                     example: 'right sizes together',          emojis: ['📏','🎨'] },
+      { _id: 'art-5', term: 'Texture',     definition: 'Surface quality of an artwork',         type: 'mnemonic', parts: [{chunk:'TEX',meaning:'touch'},{chunk:'TURE',meaning:'surface'}],                   example: 'how it feels or looks',         emojis: ['👆','🖌️'] },
+      { _id: 'art-6', term: 'Hue',         definition: 'Pure color in the spectrum',            type: 'mnemonic', parts: [{chunk:'HUE',meaning:'who/what color'}],                                           example: 'basic color identity',          emojis: ['🌈'] },
+      { _id: 'art-7', term: 'Saturation',  definition: 'Intensity of a color',                  type: 'mnemonic', parts: [{chunk:'SAT',meaning:'full'},{chunk:'URATION',meaning:'color strength'}],          example: 'how strong the color is',       emojis: ['🎨','🔥'] },
+      { _id: 'art-8', term: 'Balance',     definition: 'Visual stability in a composition',     type: 'mnemonic', parts: [{chunk:'BAL',meaning:'equal'},{chunk:'ANCE',meaning:'stability'}],                  example: 'everything feels stable',       emojis: ['⚖️','🖼️'] },
     ],
   },
 ];
@@ -1812,7 +1812,7 @@ function sortSets(dir) {
   const addCard = grid.querySelector('.md-add-card');
   const cards   = [...grid.querySelectorAll('.md-set-card')];
   if (_sortDir) {
-    cards.sort((a, b) => { const cmp = a.dataset.name.localeCompare(b.dataset.name); return _sortDir === 'asc' ? cmp : -cmp; });
+    cards.sort((a, b) => { const cmp = a.dataset.name.localeCompare(b.dataset.name, undefined, {sensitivity:'base'}); return _sortDir === 'asc' ? cmp : -cmp; });
   } else {
     cards.sort((a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order));
   }

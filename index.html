@@ -819,109 +819,34 @@
 
 <!-- ── EXPLORE VIEW ── -->
 <div id="explore-view" class="full-view">
-  <div class="ex-shell">
-    <div class="ex-sidebar-wrap">
-      <div class="ex-side-title">Browse</div>
-      <div class="ex-side-item active">🔭 Discover</div>
-      <div class="ex-side-item">⭐ Popular</div>
-      <div class="ex-side-item">🆕 New</div>
-      <div class="ex-side-item">📚 Staff picks</div>
-      <div class="ex-side-title">Categories</div>
-      <div class="ex-side-item">📖 Language &amp; Vocab</div>
-      <div class="ex-side-item">💼 Business</div>
-      <div class="ex-side-item">🔬 Science</div>
-      <div class="ex-side-item">⚖️ Law &amp; Politics</div>
-      <div class="ex-side-item">🌍 Geography</div>
-      <div class="ex-side-item">🎨 Arts &amp; Culture</div>
-      <div class="ex-side-item">🏥 Medicine</div>
-      <div class="ex-side-item">💻 Technology</div>
+  <div class="ex-shell" style="max-width:900px;margin:0 auto;padding:48px 32px;">
+    <div class="ex-header">
+      <div class="ex-title">Explore <em>decks</em></div>
+      <div class="ex-sub">Official StepWise decks — study-ready with mnemonics</div>
     </div>
-    <div class="ex-main">
-      <div class="ex-header">
-        <div class="ex-title">Explore <em>decks</em></div>
-        <div class="ex-sub">Discover community-made sets and add them to your library</div>
-      </div>
-      <div class="ex-search-wrap">
-        <span class="ex-search-icon">🔍</span>
-        <input class="ex-search" placeholder="Search decks, topics, words…">
-      </div>
-      <div class="ex-cats">
-        <div class="ex-cat active">All</div>
-        <div class="ex-cat">📖 Vocabulary</div>
-        <div class="ex-cat">💼 Business</div>
-        <div class="ex-cat">🔬 Science</div>
-        <div class="ex-cat">⚖️ Law</div>
-        <div class="ex-cat">🌍 Geography</div>
-        <div class="ex-cat">🎨 Arts</div>
-        <div class="ex-cat">🏥 Medicine</div>
-        <div class="ex-cat">💻 Tech</div>
-      </div>
-      <div class="ex-featured" data-action="showDeck" data-arg1="lavender" data-arg2="Philosophy of Mind">
-        <div class="ex-feat-label">✨ Featured this week</div>
-        <div class="ex-feat-title">Philosophy of Mind</div>
-        <div class="ex-feat-desc">From qualia to consciousness — 60 essential terms used in cognitive science, philosophy and neuroscience. Curated by Prof. R. Chen.</div>
-        <div class="ex-feat-meta">
-          <div class="ex-feat-stat"><strong>60</strong> words</div>
-          <div class="ex-feat-stat"><strong>4,821</strong> learners</div>
-          <div class="ex-feat-stat"><strong>4.9 ★</strong> rating</div>
-          <button class="ex-feat-btn">Preview deck →</button>
+    <div class="ex-grid" style="margin-top:32px;">
+      <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-en">
+        <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">☀️</div>
+        <div class="ex-card-body">
+          <div class="ex-card-name">English (B1/B2)</div>
+          <div class="ex-card-meta">8 words · by StepWise</div>
+          <div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Vocabulary</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">✦ Official</span></div>
         </div>
       </div>
-      <div class="ex-section-title">StepWise Originals ✦</div>
-      <div class="ex-grid">
-        <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-en">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">🎓</div>
-          <div class="ex-card-body"><div class="ex-card-name">English (B1/B2)</div><div class="ex-card-meta">8 words · by StepWise</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Vocabulary</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">✦ Official</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-med">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#9FC3F0,#578DDC)">🏥</div>
-          <div class="ex-card-body"><div class="ex-card-name">Medicine</div><div class="ex-card-meta">8 words · by StepWise</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EAF0FB;color:#1A3A6A;">Medicine</span><span class="ex-card-tag" style="background:#EAF0FB;color:#1A3A6A;">✦ Official</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-art">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F4C2D4,#E8889E)">🎨</div>
-          <div class="ex-card-body"><div class="ex-card-name">Art</div><div class="ex-card-meta">8 words · by StepWise</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FCF0F4;color:#6A1A30;">Arts</span><span class="ex-card-tag" style="background:#FCF0F4;color:#6A1A30;">✦ Official</span></div></div>
+      <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-med">
+        <div class="ex-card-banner" style="background:linear-gradient(135deg,#9FC3F0,#578DDC)">🧠</div>
+        <div class="ex-card-body">
+          <div class="ex-card-name">Medicine</div>
+          <div class="ex-card-meta">8 words · by StepWise</div>
+          <div class="ex-card-tags"><span class="ex-card-tag" style="background:#EAF0FB;color:#1A3A6A;">Medicine</span><span class="ex-card-tag" style="background:#EAF0FB;color:#1A3A6A;">✦ Official</span></div>
         </div>
       </div>
-      <div class="ex-section-title">Trending now 🔥</div>
-      <div class="ex-grid">
-        <div class="ex-card" data-action="showDeck" data-arg1="amber" data-arg2="Advanced GRE Vocab">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">📖</div>
-          <div class="ex-card-body"><div class="ex-card-name">Advanced GRE Vocab</div><div class="ex-card-meta">120 words · by stepwise_official</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Test Prep</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">⭐ 4.8</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showDeck" data-arg1="terracotta" data-arg2="Startup &amp; VC Terms">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#EEBDA8,#D98B6E)">🚀</div>
-          <div class="ex-card-body"><div class="ex-card-name">Startup &amp; VC Terms</div><div class="ex-card-meta">85 words · by venture_vocab</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">Business</span><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">⭐ 4.7</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showDeck" data-arg1="sage" data-arg2="Neuroscience Basics">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#B8D4BA,#89B08C)">🧠</div>
-          <div class="ex-card-body"><div class="ex-card-name">Neuroscience Basics</div><div class="ex-card-meta">72 words · by dr_sylvia_k</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">Science</span><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">⭐ 4.9</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showDeck" data-arg1="lavender" data-arg2="Latin Legal Phrases">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#C8C2E4,#A89CCE)">⚖️</div>
-          <div class="ex-card-body"><div class="ex-card-name">Latin Legal Phrases</div><div class="ex-card-meta">55 words · by law_school_hub</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">Law</span><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">⭐ 4.6</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showDeck" data-arg1="amber" data-arg2="IELTS Academic Words">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">🌐</div>
-          <div class="ex-card-body"><div class="ex-card-name">IELTS Academic Words</div><div class="ex-card-meta">100 words · by english_edge</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Test Prep</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">⭐ 4.5</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showDeck" data-arg1="sage" data-arg2="Environmental Science">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#B8D4BA,#89B08C)">🌿</div>
-          <div class="ex-card-body"><div class="ex-card-name">Environmental Science</div><div class="ex-card-meta">68 words · by eco_learn</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">Science</span><span class="ex-card-tag" style="background:#EAF3EB;color:#2E5430;">⭐ 4.7</span></div></div>
-        </div>
-      </div>
-      <div class="ex-section-title">Staff picks 📚</div>
-      <div class="ex-grid">
-        <div class="ex-card" data-action="showDeck" data-arg1="terracotta" data-arg2="Medical Terminology">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#EEBDA8,#D98B6E)">🏥</div>
-          <div class="ex-card-body"><div class="ex-card-name">Medical Terminology</div><div class="ex-card-meta">150 words · by medvocab_pro</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">Medicine</span><span class="ex-card-tag" style="background:#FAEEE9;color:#7A2E14;">⭐ 4.9</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showDeck" data-arg1="lavender" data-arg2="Literary Devices">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#C8C2E4,#A89CCE)">✍️</div>
-          <div class="ex-card-body"><div class="ex-card-name">Literary Devices</div><div class="ex-card-meta">44 words · by lit_teacher</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">Language</span><span class="ex-card-tag" style="background:#EDE7F6;color:#4527A0;">⭐ 4.8</span></div></div>
-        </div>
-        <div class="ex-card" data-action="showDeck" data-arg1="amber" data-arg2="Cognitive Biases">
-          <div class="ex-card-banner" style="background:linear-gradient(135deg,#F2DFA0,#DCBD6A)">🧐</div>
-          <div class="ex-card-body"><div class="ex-card-name">Cognitive Biases</div><div class="ex-card-meta">36 words · by mindhacks</div><div class="ex-card-tags"><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">Psychology</span><span class="ex-card-tag" style="background:#FFF4DC;color:#9A6800;">⭐ 4.9</span></div></div>
+      <div class="ex-card" data-action="showExploreDeck" data-arg1="explore-art">
+        <div class="ex-card-banner" style="background:linear-gradient(135deg,#F4C2D4,#E8889E)">🎨</div>
+        <div class="ex-card-body">
+          <div class="ex-card-name">Art</div>
+          <div class="ex-card-meta">8 words · by StepWise</div>
+          <div class="ex-card-tags"><span class="ex-card-tag" style="background:#FCF0F4;color:#6A1A30;">Arts</span><span class="ex-card-tag" style="background:#FCF0F4;color:#6A1A30;">✦ Official</span></div>
         </div>
       </div>
     </div>
